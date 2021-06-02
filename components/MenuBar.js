@@ -1,0 +1,36 @@
+import {
+	Flex,
+	useColorMode,
+	Box,
+	IconButton,
+	Image,
+	Heading,
+} from "@chakra-ui/react";
+import { LockIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+
+const MenuBar = () => {
+	const { colorMode, toggleColorMode } = useColorMode();
+	return (
+		<Flex width='100%' alignItems='center' justifyContent='space-between'>
+			<Heading ml={5} size='md'>
+				EE Career Fair 2021
+			</Heading>
+			<Flex>
+				<Box>
+					<IconButton
+						onClick={() => console.log("Logout Button Clicked")}
+						icon={<LockIcon />}
+					/>
+				</Box>
+				<Box ml={2}>
+					<IconButton
+						onClick={toggleColorMode}
+						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+					/>
+				</Box>
+			</Flex>
+		</Flex>
+	);
+};
+
+export default MenuBar;

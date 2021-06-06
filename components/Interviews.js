@@ -7,31 +7,15 @@ import {
 	Button,
 } from "@chakra-ui/react";
 
-import InterviewUpdates from "../components/InterviewUpdates";
-import MenuBar from "../components/MenuBar";
-import UserDetails from "../components/UserDetails";
-import WalkinInterviews from "../components/WalkinInterviews";
-
-const dashboard = () => {
-	return (
-		<Flex height='100vh' flexDirection='column' padding={5}>
-			<MenuBar />
-			<Flex flexDirection='row' mt={5}>
-				<UserDetails />
-				<Interviews />
-				<WalkinInterviews />
-			</Flex>
-		</Flex>
-	);
-};
+import InterviewUpdates from "./InterviewUpdates";
 
 const Interviews = () => {
-	const cardBackground = useColorModeValue("gray.100", "gray.900");
+	const cardBackground = useColorModeValue("gray.100", "gray.700");
 	return (
-		<Flex width='53%' justifyContent='center'>
+		<Flex width='53%' justifyContent='center' maxHeight='60%'>
 			<Flex
 				p={3}
-				height='600'
+				height='-webkit-fit-content'
 				width='100%'
 				rounded={6}
 				background={cardBackground}
@@ -53,6 +37,7 @@ const AssignedInterviews = () => {
 			interview_id: 1,
 			company_name: "Google",
 			company_logo: "https://bit.ly/3g0VH4E",
+			panel_no: 2,
 			queue_length: 3,
 			interview_schedule: "1st of June 9.00AM to 12.00PM",
 		},
@@ -60,12 +45,19 @@ const AssignedInterviews = () => {
 			interview_id: 2,
 			company_name: "Microsoft",
 			company_logo: "https://bit.ly/2S2Ws53",
+			panel_no: 3,
 			queue_length: 5,
 			interview_schedule: "2nd of June 9.00AM to 12.00PM",
 		},
 	];
 	return (
-		<Flex flexDirection='column' mt={5} width='100%'>
+		<Flex
+			flexDirection='column'
+			mt={5}
+			width='100%'
+			p={2}
+			overflow='scroll'
+			maxHeight={500}>
 			<Heading size='md' mb={5}>
 				Your Assigned Interviews
 			</Heading>
@@ -79,7 +71,7 @@ const AssignedInterviews = () => {
 const InterviewCard = ({ data }) => {
 	return (
 		<Flex
-			shadow='base'
+			shadow='md'
 			rounded={5}
 			p={3}
 			flexDirection='column'
@@ -88,13 +80,14 @@ const InterviewCard = ({ data }) => {
 			<Flex justifyContent='space-between'>
 				<Flex alignItems='center'>
 					<Avatar
-						size='lg'
+						size='md'
 						src={data.company_logo}
 						mr={3}
 						backgroundColor='white'
 					/>
 					<Flex flexDirection='column'>
 						<Text fontSize='larger'>{data.company_name}</Text>
+						<Text fontSize='smaller'>Panel {data.panel_no}</Text>
 					</Flex>
 				</Flex>
 				<Flex alignItems='center'>
@@ -111,4 +104,4 @@ const InterviewCard = ({ data }) => {
 	);
 };
 
-export default dashboard;
+export default Interviews;

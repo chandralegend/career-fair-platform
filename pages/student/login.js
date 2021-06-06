@@ -34,7 +34,7 @@ const login = () => {
 				</Heading>
 			</Center>
 			<Flex direction='column' background={formBackground} p={12} rounded={6}>
-				<Heading mb={6}>Log In</Heading>
+				{/* <Heading mb={6}>Log In</Heading> */}
 				<Input
 					placeholder='University ID'
 					variant='filled'

@@ -12,7 +12,7 @@ const MenuBar = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	return (
 		<Flex width='100%' alignItems='center' justifyContent='space-between'>
-			<Heading ml={5} size='md'>
+			<Heading size='md' color='white'>
 				EE Career Fair 2021
 			</Heading>
 			<Flex>

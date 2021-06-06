@@ -7,7 +7,7 @@ import {
 	Button,
 } from "@chakra-ui/react";
 
-const WalkinInterviews = () => {
+const WalkInInterviews = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	const interviews = [
 		{
@@ -46,7 +46,7 @@ const WalkinInterviews = () => {
 					{interviews &&
 						interviews.map((interview) => {
 							return (
-								<WalkinInterviewCard data={interview} key={interview.id} />
+								<WalkInInterviewCard data={interview} key={interview.id} />
 							);
 						})}
 				</Flex>
@@ -55,7 +55,7 @@ const WalkinInterviews = () => {
 	);
 };
 
-const WalkinInterviewCard = ({ data }) => {
+const WalkInInterviewCard = ({ data }) => {
 	const { company_name, company_logo, n_people } = data;
 	return (
 		<Flex shadow='md' rounded={5} p={3} flexDirection='column' mb={5}>
@@ -71,4 +71,4 @@ const WalkinInterviewCard = ({ data }) => {
 	);
 };
 
-export default WalkinInterviews;
+export default WalkInInterviews;

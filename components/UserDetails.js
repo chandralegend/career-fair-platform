@@ -13,7 +13,7 @@ const UserDetails = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	const user = {
 		name: "Chandra Irugalbandara",
-		avatar_img: "https://bit.ly/sage-adebayo",
+		avatar_img: "https://bit.ly/34L4l1H",
 		uni_id: "170238C",
 		email: "chandra.legendary@gmail.com",
 		mobile_no: "0719102569",

@@ -45,12 +45,7 @@ const login = () => {
 					p={12}
 					rounded={6}
 					alignItems='center'>
-					<Input
-						placeholder='University ID'
-						variant='filled'
-						mb={3}
-						type='email'
-					/>
+					<Input placeholder='Username' variant='filled' mb={3} type='email' />
 					<Input
 						placeholder='Password'
 						variant='filled'

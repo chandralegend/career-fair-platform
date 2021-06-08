@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import {
 	Flex,
@@ -9,6 +8,7 @@ import {
 	Button,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { StudentIcon, CompanyIcon } from "../components/icons";
 
 const index = () => {
 	const router = useRouter();
@@ -31,14 +31,22 @@ const index = () => {
 				</Heading>
 				<Flex alignContent='center'>
 					<Button
-						height={100}
-						width={100}
+						boxSize={150}
 						mr={5}
-						onClick={() => router.push("/student/dashboard")}>
+						onClick={() => router.push("/student/login")}
+						flex
+						flexDirection='column'>
+						<StudentIcon boxSize='8' mb={2} />
 						Student
 					</Button>
-					<Button height={100} width={100}>
-						<Link href='/student/dashboard'>Recruiter</Link>
+					<Button
+						boxSize={150}
+						onClick={() => router.push("/company/login")}
+						flex
+						flexDirection='column'
+						alignContent='center'>
+						<CompanyIcon boxSize='8' mb={2} />
+						Recruiter
 					</Button>
 				</Flex>
 			</Flex>

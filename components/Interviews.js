@@ -10,7 +10,7 @@ import {
 import InterviewUpdates from "./InterviewUpdates";
 
 const Interviews = () => {
-	const cardBackground = useColorModeValue("gray.100", "gray.700");
+	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	return (
 		<Flex width='53%' justifyContent='center' maxHeight='60%'>
 			<Flex

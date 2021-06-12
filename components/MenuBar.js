@@ -7,20 +7,17 @@ import {
 	Heading,
 } from "@chakra-ui/react";
 import { LockIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { useAuth } from "../lib/auth";
 
 const MenuBar = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
+	const { user, signout } = useAuth();
 	return (
 		<Flex width='100%' alignItems='center' justifyContent='space-between'>
-			<Heading size='md' color='white'>
-				EE Career Fair 2021
-			</Heading>
+			<Heading size='md'>EE Career Fair 2021</Heading>
 			<Flex>
 				<Box>
-					<IconButton
-						onClick={() => console.log("Logout Button Clicked")}
-						icon={<LockIcon />}
-					/>
+					<IconButton onClick={signout} icon={<LockIcon />} />
 				</Box>
 				<Box ml={2}>
 					<IconButton

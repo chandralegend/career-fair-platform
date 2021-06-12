@@ -1,23 +1,29 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Fade } from "@chakra-ui/react";
 
 import MenuBar from "../../components/MenuBar";
 import UserDetails from "../../components/UserDetails";
 import WalkInInterviews from "../../components/WalkInInterviews";
 import Interviews from "../../components/Interviews";
+import { useAuth } from "../../lib/auth";
+import router from "next/router";
 
 const dashboard = () => {
+	const { loading, user } = useAuth();
+
+	if (!loading && !user) {
+		router.push("/");
+	}
+
 	return (
-		<Flex
-			height='100vh'
-			flexDirection='column'
-			padding={5}
-			backgroundImage='https://bit.ly/3yXTlvM'>
+		<Flex height='100vh' flexDirection='column' padding={5}>
 			<MenuBar />
-			<Flex flexDirection='row' mt={5}>
-				<UserDetails />
-				<Interviews />
-				<WalkInInterviews />
-			</Flex>
+			<Fade in>
+				<Flex flexDirection='row' mt={5}>
+					<UserDetails />
+					<Interviews />
+					<WalkInInterviews />
+				</Flex>
+			</Fade>
 		</Flex>
 	);
 };

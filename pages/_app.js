@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "@fontsource/montserrat";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import { AuthProvider } from "../lib/auth";
 
 const theme = extendTheme({
 	fonts: {
@@ -13,7 +14,9 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }) {
 	return (
 		<ChakraProvider theme={theme}>
-			<Component {...pageProps} />
+			<AuthProvider>
+				<Component {...pageProps} />
+			</AuthProvider>
 		</ChakraProvider>
 	);
 }

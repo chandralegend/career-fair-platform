@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { useForm } from "react-hook-form";
 import {
 	Box,
 	Button,
@@ -10,16 +10,35 @@ import {
 	useColorMode,
 	useColorModeValue,
 	SlideFade,
-	Text,
+	FormControl,
+	FormErrorMessage,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { useAuth } from "../../lib/auth";
 
 const login = () => {
-	// TODO: Login and Input handlers
-	// TODO: Route to Change Password. Previous Password Method
-
 	const { colorMode, toggleColorMode } = useColorMode();
 	const formBackground = useColorModeValue("gray.100", "gray.900");
+	const {
+		handleSubmit,
+		register,
+		formState: { errors },
+		setError,
+	} = useForm();
+	const { loading, signin, setLoading } = useAuth();
+
+	function onSubmit(values) {
+		signin(
+			values.username + "@company.lk",
+			values.password,
+			"/company/dashboard"
+		)
+			.then()
+			.catch((err) => {
+				setError("password", { message: "Invalid Credentials" });
+				setLoading(false);
+			});
+	}
 
 	return (
 		<Flex
@@ -39,26 +58,54 @@ const login = () => {
 						EE Career Fair 2021
 					</Heading>
 				</Center>
-				<Flex
-					direction='column'
-					background={formBackground}
-					p={12}
-					rounded={6}
-					alignItems='center'>
-					<Input placeholder='Username' variant='filled' mb={3} type='email' />
-					<Input
-						placeholder='Password'
-						variant='filled'
-						mb={6}
-						type='password'
-					/>
-					<Button colorScheme='teal' type='submit' width='100%' mb={3}>
-						Log in
-					</Button>
-					<Text as={Link} href='#' fontSize='xx-small'>
-						Change Password
-					</Text>
-				</Flex>
+
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<Center>
+						<Flex
+							direction='column'
+							background={formBackground}
+							p={12}
+							rounded={6}
+							alignItems='center'
+							maxWidth='-webkit-max-content'>
+							<FormControl isInvalid={errors.username} mb={3}>
+								<Input
+									id='username'
+									placeholder='Username'
+									variant='filled'
+									{...register("username", {
+										required: "Username is required",
+									})}
+								/>
+								<FormErrorMessage flex justifyContent='center'>
+									{errors.username && errors.username.message}
+								</FormErrorMessage>
+							</FormControl>
+							<FormControl isInvalid={errors.password} mb={6}>
+								<Input
+									id='password'
+									placeholder='Password'
+									variant='filled'
+									type='password'
+									{...register("password", {
+										required: "Password is Required",
+									})}
+								/>
+								<FormErrorMessage flex justifyContent='center'>
+									{errors.password && errors.password.message}
+								</FormErrorMessage>
+							</FormControl>
+							<Button
+								colorScheme='teal'
+								type='submit'
+								width='100%'
+								mb={3}
+								isLoading={loading}>
+								Log in
+							</Button>
+						</Flex>
+					</Center>
+				</form>
 			</SlideFade>
 		</Flex>
 	);

@@ -28,7 +28,11 @@ const login = () => {
 	const { loading, signin, setLoading } = useAuth();
 
 	function onSubmit(values) {
-		signin(values.username + "@uom.lk", values.password, "/student/dashboard")
+		signin(
+			values.username + "@company.lk",
+			values.password,
+			"/company/dashboard"
+		)
 			.then()
 			.catch((err) => {
 				setError("password", {
@@ -70,12 +74,10 @@ const login = () => {
 							<FormControl isInvalid={errors.username} mb={3}>
 								<Input
 									id='username'
-									placeholder='University ID'
+									placeholder='Username'
 									variant='filled'
 									{...register("username", {
-										required: "University ID is required",
-										minLength: { value: 7, message: "Invalid University ID" },
-										maxLength: { value: 7, message: "Invalid University ID" },
+										required: "Username is required",
 									})}
 								/>
 								<FormErrorMessage flex justifyContent='center'>

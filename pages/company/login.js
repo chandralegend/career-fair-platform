@@ -35,7 +35,10 @@ const login = () => {
 		)
 			.then()
 			.catch((err) => {
-				setError("password", { message: "Invalid Credentials" });
+				setError("password", {
+					message: "Invalid Credentials",
+					shouldFocus: false,
+				});
 				setLoading(false);
 			});
 	}

@@ -31,7 +31,10 @@ const login = () => {
 		signin(values.username + "@uom.lk", values.password, "/student/dashboard")
 			.then()
 			.catch((err) => {
-				setError("password", { message: "Invalid Credentials" });
+				setError("password", {
+					message: "Invalid Credentials",
+					shouldFocus: false,
+				});
 				setLoading(false);
 			});
 	}

@@ -15,16 +15,20 @@ const dashboard = () => {
 	}
 
 	return (
-		<Flex height='100vh' flexDirection='column' padding={5}>
-			<MenuBar />
-			<Fade in>
-				<Flex flexDirection='row' mt={5}>
-					<UserDetails />
-					<Interviews />
-					<WalkInInterviews />
+		<>
+			{user ? (
+				<Flex height='100vh' flexDirection='column' padding={5}>
+					<MenuBar />
+					<Fade in>
+						<Flex flexDirection='row' mt={5}>
+							<UserDetails />
+							<Interviews />
+							<WalkInInterviews />
+						</Flex>
+					</Fade>
 				</Flex>
-			</Fade>
-		</Flex>
+			) : null}
+		</>
 	);
 };
 

@@ -14,7 +14,7 @@ const MenuBar = () => {
 	const { user, signout } = useAuth();
 	return (
 		<Flex width='100%' alignItems='center' justifyContent='space-between'>
-			<Heading size='md'>EE Career Fair 2021</Heading>
+			<Heading size='md'>{user ? user.email : "EE Career Fair"}</Heading>
 			<Flex>
 				<Box>
 					<IconButton onClick={signout} icon={<LockIcon />} />

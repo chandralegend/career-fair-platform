@@ -1,26 +1,24 @@
 import {
 	Flex,
-	Box,
 	Avatar,
 	Heading,
 	Text,
 	useColorModeValue,
 	ButtonGroup,
 	Button,
+	useDisclosure,
+	Center,
 } from "@chakra-ui/react";
+import { useAuth } from "../lib/auth";
+import ChangePasswordModal from "./PasswordModal";
 
 const UserDetails = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
-	const user = {
-		name: "Chandra Irugalbandara",
-		avatar_img: "https://bit.ly/34L4l1H",
-		uni_id: "170238C",
-		email: "chandra.legendary@gmail.com",
-		mobile_no: "0719102569",
-		department: "ELectrical Engineering",
-	};
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { user } = useAuth();
 	return (
 		<Flex width='23%' justifyContent='center'>
+			<ChangePasswordModal isOpen={isOpen} onClose={onClose} />
 			<Flex
 				p={6}
 				height='-webkit-fit-content'
@@ -30,20 +28,25 @@ const UserDetails = () => {
 				flexDirection='column'
 				alignItems='center'
 				shadow='md'>
-				<Avatar size='2xl' name={user.name} src={user.avatar_img} />
+				<Avatar size='2xl' name={user.name} src={user.photoUrl} />
 				<Heading size='md' m={4}>
-					Chandra Irugalbandara
+					{user.name}
 				</Heading>
 				<Flex flexDirection='column' alignItems='center'>
-					<Text fontSize='small'>{user.uni_id}</Text>
+					<Text fontSize='small'>{user.username}</Text>
 					<Text fontSize='small'>{user.email}</Text>
-					<Text fontSize='small'>{user.mobile_no} (Mobile)</Text>
+					<Text fontSize='small'>{user.phone} (Mobile)</Text>
 					<Text fontSize='small'>{user.department}</Text>
 				</Flex>
-				<ButtonGroup mt={4}>
-					<Button>Upload CV</Button>
-					<Button disabled>View CV</Button>
-				</ButtonGroup>
+				<Center flexDirection='column'>
+					<ButtonGroup mt={4} mb={2}>
+						<Button>Upload CV</Button>
+						<Button disabled={!user.cvUrl}>View CV</Button>
+					</ButtonGroup>
+					<Button onClick={onOpen} width='100%'>
+						Change Password
+					</Button>
+				</Center>
 			</Flex>
 		</Flex>
 	);

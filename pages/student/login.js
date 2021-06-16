@@ -31,9 +31,8 @@ const login = () => {
 		signin(values.username + "@uom.lk", values.password, "/student/dashboard")
 			.then()
 			.catch((err) => {
-				setError("password", {
+				setError("submitError", {
 					message: "Invalid Credentials",
-					shouldFocus: false,
 				});
 				setLoading(false);
 			});
@@ -96,14 +95,19 @@ const login = () => {
 									{errors.password && errors.password.message}
 								</FormErrorMessage>
 							</FormControl>
-							<Button
-								colorScheme='teal'
-								type='submit'
-								width='100%'
-								mb={3}
-								isLoading={loading}>
-								Log in
-							</Button>
+							<FormControl isInvalid={errors.submitError}>
+								<Button
+									colorScheme='teal'
+									type='submit'
+									width='100%'
+									mb={3}
+									isLoading={loading}>
+									Log in
+								</Button>
+								<FormErrorMessage flex justifyContent='center'>
+									{errors.submitError && errors.submitError.message}
+								</FormErrorMessage>
+							</FormControl>
 						</Flex>
 					</Center>
 				</form>

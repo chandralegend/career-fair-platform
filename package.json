@@ -13,6 +13,7 @@
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
 		"@fontsource/montserrat": "^4.4.2",
+		"axios": "^0.21.1",
 		"firebase": "^8.6.7",
 		"framer-motion": "^4",
 		"jwt-decode": "^3.1.2",

@@ -3,10 +3,10 @@ import {
 	useColorMode,
 	Box,
 	IconButton,
-	Image,
 	Heading,
+	Button,
 } from "@chakra-ui/react";
-import { LockIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../lib/auth";
 
 const MenuBar = () => {
@@ -17,7 +17,7 @@ const MenuBar = () => {
 			<Heading size='md'>EE Career Fair</Heading>
 			<Flex>
 				<Box>
-					<IconButton onClick={signout} icon={<LockIcon />} />
+					<Button onClick={signout}>Log Out</Button>
 				</Box>
 				<Box ml={2}>
 					<IconButton

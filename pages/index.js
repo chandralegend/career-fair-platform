@@ -9,8 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { StudentIcon, CompanyIcon } from "../components/icons";
+import { useState } from "react";
 
 const index = () => {
+	const [counter, setCounter] = useState(0);
 	const router = useRouter();
 	const { colorMode, toggleColorMode } = useColorMode();
 	return (
@@ -26,6 +28,10 @@ const index = () => {
 				/>
 			</Box>
 			<Flex alignItems='center' justifyContent='center' direction='column'>
+				<Heading>{counter}</Heading>
+				<Button onClick={() => setCounter(counter + 1)}>
+					Increment Counter
+				</Button>
 				<Heading size='md' mb={5}>
 					Login As
 				</Heading>

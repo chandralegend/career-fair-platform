@@ -1,12 +1,10 @@
 import {
 	Flex,
 	Avatar,
-	useColorModeValue,
 	Heading
 } from "@chakra-ui/react";
 
-const CompanyDetails = () => {
-	const cardBackground = useColorModeValue("gray.100", "gray.900");
+const CompanyDetails = ({cardBackground}) => {
 	const user = {
 		name: "WSO2",
 		avatar_img: "https://th.bing.com/th/id/OIP.czoTouAYtIYcLzXq9JEkFAAAAA?pid=ImgDet&rs=1",

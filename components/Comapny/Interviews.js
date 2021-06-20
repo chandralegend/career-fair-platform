@@ -1,6 +1,5 @@
 import {
   Flex,
-  useColorModeValue,
   Button,
   Box,
   Tab,
@@ -17,8 +16,7 @@ import {
   Tbody,
 } from "@chakra-ui/react";
 
-const Interviews = () => {
-  const cardBackground = useColorModeValue("gray.100", "gray.700");
+const Interviews = ({cardBackground}) => {
 
   const assignedCandidates = [
     {

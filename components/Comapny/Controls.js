@@ -1,19 +1,11 @@
 import {
-	Flex,
-	useColorModeValue
+	Flex
 } from "@chakra-ui/react";
 
-import ControlCurrentCandidate from "./ControlCurrentCandidate";
+import ControlCandidate from "./ControlCandidate";
 import OtherControls from "./OtherControls";
 
-const Controls = () => {
-	
-    const cardBackground = useColorModeValue("gray.100", "gray.900");
-	const user = {
-		name: "wso2",
-		avatar_img: "https://th.bing.com/th/id/OIP.czoTouAYtIYcLzXq9JEkFAAAAA?pid=ImgDet&rs=1",
-		email: "wso2@gmail.com",
-	};
+const Controls = ({cardBackground}) => {
 
 	const data = [
 		{	name: "John Doe",
@@ -41,7 +33,7 @@ const Controls = () => {
 		rounded={7}
 		p={3}
 		>
-			<ControlCurrentCandidate data={data[0]} cardBackground={cardBackground} />
+			<ControlCandidate data={data[0]} cardBackground={cardBackground} />
 			<OtherControls data={data[1]} cardBackground={cardBackground} />
 		</Flex>
 	);

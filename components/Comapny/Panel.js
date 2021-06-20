@@ -1,13 +1,10 @@
 import {
 	Flex,
     Select,
-    Heading,
-    useColorModeValue
+    Heading
 } from "@chakra-ui/react";
 
-const Panel = () => {
-
-    const cardBackground = useColorModeValue("gray.100", "gray.900");
+const Panel = ({cardBackground}) => {
 
     return (
         <Flex 

@@ -1,12 +1,10 @@
 import {
 	Flex,
 	Heading,
-	useColorModeValue,
 	Text,
 } from "@chakra-ui/react";
 
-const Sessions = () => {
-	const cardBackground = useColorModeValue("gray.100", "gray.700");
+const Sessions = ({cardBackground}) => {
 	return (
 		<Flex width='100%' justifyContent='center' maxHeight='60%'>
 			<Flex

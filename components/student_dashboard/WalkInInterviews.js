@@ -6,7 +6,6 @@ import {
 	Avatar,
 	Button,
 } from "@chakra-ui/react";
-import { useState } from "react";
 
 const WalkInInterviews = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");

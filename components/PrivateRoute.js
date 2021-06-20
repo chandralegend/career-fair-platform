@@ -8,8 +8,7 @@ const PrivateRoute = ({ children, endsWith }) => {
 	if (!loading && (!user || !user.user.email.endsWith(endsWith))) {
 		router.push("/");
 	}
-
-	return <>{user ? children : null}</>;
+	return <>{user && children}</>;
 };
 
 export default PrivateRoute;

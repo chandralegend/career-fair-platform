@@ -9,7 +9,7 @@ import {
 	useDisclosure,
 	Center,
 } from "@chakra-ui/react";
-import { useAuth } from "../lib/auth";
+import { useAuth } from "../../lib/auth";
 import ChangePasswordModal from "./PasswordModal";
 
 const UserDetails = () => {

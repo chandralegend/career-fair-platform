@@ -1,34 +1,33 @@
 import { Flex } from "@chakra-ui/react";
 
-import CompanyHeader from "../../components/Comapny/CompanyHeader";
-import CompanyDetails from "../../components/Comapny/CompanyDetails";
-import Interviews from "../../components/Comapny/Interviews";
-import Controls from "../../components/Comapny/Controls";
-import CompanySessions from "../../components/Comapny/CompanySessions";
-import Panel from "../../components/Comapny/Panel";
+import PrivateRoute from "../../components/PrivateRoute";
+import MenuBar from "../../components/MenuBar";
+import CompanyDetails from "../../components/company_dashboard/CompanyDetails";
+import Interviews from "../../components/company_dashboard/Interviews";
+import InterviewController from "../../components/company_dashboard/InterviewController";
+import CompanySessions from "../../components/company_dashboard/CompanySessions";
+import PanelSelector from "../../components/company_dashboard/PanelSelector";
 
 const dashboard = () => {
 	return (
-		<Flex
-			height='100vh'
-			flexDirection='column'
-			backgroundImage='https://bit.ly/3yXTlvM'>
-			<CompanyHeader />
-			<Flex flexDirection='row' mt={5} >
-				<Flex flexDirection='column' width="25%" ml={3} mr={3}>
-					<Panel />
-					<CompanyDetails />
-					<CompanySessions />
-				</Flex>
-				<Flex flexDirection='column' width="45%" mr={3} >
-					<Interviews />
-				</Flex>
-				<Flex flexDirection='column' width="30%" mr={3}>
-					<Controls/>
+		<PrivateRoute endsWith='@company.lk'>
+			<Flex height='100vh' flexDirection='column' padding={5}>
+				<MenuBar />
+				<Flex flexDirection='row' mt={3}>
+					<Flex flexDirection='column' width='20%' mr={3}>
+						<PanelSelector />
+						<CompanyDetails />
+						<CompanySessions />
+					</Flex>
+					<Flex width='55%'>
+						<Interviews />
+					</Flex>
+					<Flex width='25%' ml={3} flexDirection='column'>
+						<InterviewController />
+					</Flex>
 				</Flex>
 			</Flex>
-				
-		</Flex>
+		</PrivateRoute>
 	);
 };
 

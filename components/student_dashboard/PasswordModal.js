@@ -14,7 +14,7 @@ import {
 	useColorModeValue,
 } from "@chakra-ui/react";
 
-import { useAuth } from "../lib/auth";
+import { useAuth } from "../../lib/auth";
 
 const ChangePasswordModal = ({ isOpen, onClose }) => {
 	const modalBackground = useColorModeValue("gray.100", "gray.900");

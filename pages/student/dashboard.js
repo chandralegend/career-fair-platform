@@ -1,10 +1,10 @@
 import { Flex, Fade } from "@chakra-ui/react";
 
 import MenuBar from "../../components/MenuBar";
-import UserDetails from "../../components/UserDetails";
-import WalkInInterviews from "../../components/WalkInInterviews";
-import Interviews from "../../components/Interviews";
 import PrivateRoute from "../../components/PrivateRoute";
+import UserDetails from "../../components/student_dashboard/UserDetails";
+import WalkInInterviews from "../../components/student_dashboard/WalkInInterviews";
+import Interviews from "../../components/student_dashboard/Interviews";
 
 const dashboard = () => {
 	return (

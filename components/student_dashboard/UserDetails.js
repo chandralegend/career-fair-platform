@@ -11,8 +11,7 @@ import {
 	Input,
 	useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import React, { useState, useRef } from "react";
 
 import { useAuth } from "../../lib/auth";
 import { updateStudentCV } from "../../lib/api";
@@ -24,8 +23,7 @@ const UserDetails = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { user, updateUser } = useAuth();
 	const toast = useToast();
-	const router = useRouter();
-	const hiddenFileInput = React.useRef(null);
+	const hiddenFileInput = useRef(null);
 
 	const [uploadingCV, setUploadingCV] = useState(false);
 
@@ -142,4 +140,4 @@ const UserDetails = () => {
 	);
 };
 
-export default UserDetails;
+export default React.memo(UserDetails);

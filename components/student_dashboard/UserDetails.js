@@ -15,7 +15,7 @@ import React, { useState, useRef } from "react";
 
 import { useAuth } from "../../lib/auth";
 import { updateStudentCV } from "../../lib/api";
-import { firebase } from "../../lib/firebase";
+import { storage } from "../../lib/firebase";
 import ChangePasswordModal from "./PasswordModal";
 
 const UserDetails = () => {
@@ -37,10 +37,7 @@ const UserDetails = () => {
 					new Date().getTime().toString() +
 					(Math.ceil(Math.random() * 1000000) + 100000).toString();
 
-				const locationRef = firebase
-					.storage()
-					.ref("Student_CV")
-					.child(fileName);
+				const locationRef = storage.ref("Student_CV").child(fileName);
 				await locationRef.put(file, { contentType: file.type });
 				locationRef.getDownloadURL().then((url) => {
 					setUploadingCV(false);

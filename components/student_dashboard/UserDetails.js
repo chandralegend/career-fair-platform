@@ -87,8 +87,9 @@ const UserDetails = () => {
 	const handleClick = () => {
 		hiddenFileInput.current.click();
 	};
+
 	return (
-		<Flex width='23%' justifyContent='center'>
+		<Flex width='20%' justifyContent='center'>
 			<ChangePasswordModal isOpen={isOpen} onClose={onClose} />
 			<Flex
 				p={6}
@@ -99,8 +100,8 @@ const UserDetails = () => {
 				flexDirection='column'
 				alignItems='center'
 				shadow='md'>
-				<Avatar size='2xl' name={user.name} src={user.photoUrl} />
-				<Heading size='md' m={4}>
+				<Avatar size='2xl' name={user.name} shadow='2xl' src={user.photoUrl} />
+				<Heading size='md' m={4} textAlign='center'>
 					{user.name}
 				</Heading>
 				<Flex flexDirection='column' alignItems='center'>
@@ -112,6 +113,7 @@ const UserDetails = () => {
 				<Center flexDirection='column'>
 					<ButtonGroup mt={4} mb={2}>
 						<Button
+							boxShadow='2xl'
 							variant='solid'
 							isLoading={uploadingCV}
 							onClick={handleClick}>
@@ -123,12 +125,13 @@ const UserDetails = () => {
 							ref={hiddenFileInput}
 							onChange={handleCvUpload}></Input>
 						<Button
+							boxShadow='2xl'
 							disabled={!user.cvUrl}
 							onClick={() => window.open(user.cvUrl, "_blank")}>
 							View CV
 						</Button>
 					</ButtonGroup>
-					<Button onClick={onOpen} width='100%'>
+					<Button onClick={onOpen} width='100%' boxShadow='2xl'>
 						Change Password
 					</Button>
 				</Center>

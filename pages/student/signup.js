@@ -171,11 +171,19 @@ const studentRegister = () => {
 	};
 
 	return (
-		<Flex flexDirection='column' p={5}>
+		<Flex
+			flexDirection='column'
+			p={5}
+			backgroundImage='https://www.pexels.com/photo/2397414/download/'
+			backgroundSize='cover'
+			height='100vh'>
 			<Flex mb={6} alignItems='center' justifyContent='space-between'>
-				<Heading size='md'>Career Fair Sign Up</Heading>
+				<Heading size='md' color='white'>
+					Career Fair Sign Up
+				</Heading>
 				<IconButton
 					onClick={toggleColorMode}
+					rounded='2xl'
 					icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 				/>
 			</Flex>

@@ -6,6 +6,7 @@ import {
 	useColorMode,
 	Heading,
 	Button,
+	SlideFade,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
@@ -20,38 +21,44 @@ const index = () => {
 			height='100vh'
 			alignItems='center'
 			justifyContent='center'
-			direction='column'>
-			<Box position='absolute' right={5} top={5}>
+			direction='column'
+			backgroundImage='https://www.pexels.com/photo/2397414/download/'
+			backgroundSize='cover'>
+			<Box position='absolute' right={5} top={5} rounded='2xl'>
 				<IconButton
 					onClick={toggleColorMode}
 					icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 				/>
 			</Box>
-			<Flex alignItems='center' justifyContent='center' direction='column'>
-				<Heading size='md' mb={5}>
-					Login As
-				</Heading>
-				<Flex alignContent='center'>
-					<Button
-						boxSize={150}
-						mr={5}
-						onClick={() => router.push("/student/login")}
-						flex
-						flexDirection='column'>
-						<StudentIcon boxSize='8' mb={2} />
-						Student
-					</Button>
-					<Button
-						boxSize={150}
-						onClick={() => router.push("/company/login")}
-						flex
-						flexDirection='column'
-						alignContent='center'>
-						<CompanyIcon boxSize='8' mb={2} />
-						Recruiter
-					</Button>
+			<SlideFade in offsetY='30px'>
+				<Flex alignItems='center' justifyContent='center' direction='column'>
+					<Heading size='md' mb={5} color='white'>
+						Login As
+					</Heading>
+					<Flex alignContent='center'>
+						<Button
+							boxShadow='2xl'
+							boxSize={150}
+							mr={5}
+							onClick={() => router.push("/student/login")}
+							flex
+							flexDirection='column'>
+							<StudentIcon boxSize='8' mb={2} />
+							Student
+						</Button>
+						<Button
+							boxShadow='2xl'
+							boxSize={150}
+							onClick={() => router.push("/company/login")}
+							flex
+							flexDirection='column'
+							alignContent='center'>
+							<CompanyIcon boxSize='8' mb={2} />
+							Recruiter
+						</Button>
+					</Flex>
 				</Flex>
-			</Flex>
+			</SlideFade>
 		</Flex>
 	);
 };

@@ -43,16 +43,18 @@ const login = () => {
 			height='100vh'
 			alignItems='center'
 			justifyContent='center'
-			direction='column'>
+			direction='column'
+			backgroundImage='https://www.pexels.com/photo/2397414/download/'
+			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
-				<Box position='absolute' right={5} top={5}>
+				<Box position='absolute' right={5} top={5} rounded='2xl'>
 					<IconButton
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
 				</Box>
 				<Center>
-					<Heading mb={10} size='2xl'>
+					<Heading mb={10} size='2xl' color='white'>
 						EE Career Fair 2021
 					</Heading>
 				</Center>

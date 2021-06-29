@@ -20,7 +20,7 @@ const InterviewUpdates = () => {
 	};
 
 	return (
-		<Flex shadow='xl' rounded={5} p={6} flexDirection='column' width='100%'>
+		<Flex p={6} flexDirection='column' width='100%'>
 			{data && Object.keys(data).length > 0 ? (
 				<Flex>
 					<Flex flexDirection='column' width='30%'>

@@ -105,10 +105,18 @@ const UserDetails = () => {
 					{user.name}
 				</Heading>
 				<Flex flexDirection='column' alignItems='center'>
-					<Text fontSize='small'>{user.username}</Text>
-					<Text fontSize='small'>{user.email}</Text>
-					<Text fontSize='small'>{user.phone} (Mobile)</Text>
-					<Text fontSize='small'>{user.department}</Text>
+					<Text fontSize='small' textAlign='center'>
+						{user.username}
+					</Text>
+					<Text fontSize='small' textAlign='center'>
+						{user.email}
+					</Text>
+					<Text fontSize='small' textAlign='center'>
+						{user.phone} (Mobile)
+					</Text>
+					<Text fontSize='small' textAlign='center'>
+						{user.department}
+					</Text>
 				</Flex>
 				<Center flexDirection='column'>
 					<ButtonGroup mt={4} mb={2}>

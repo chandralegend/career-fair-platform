@@ -1,80 +1,101 @@
-import { Flex, Avatar, Text, Button } from "@chakra-ui/react";
-import { useState } from "react";
-
+import { Flex, Avatar, Text, Button, Skeleton } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
 import { db } from "../../lib/firebase";
+import { getPanel, getCompany } from "../../lib/api";
+import moment from "moment";
 
-async function getSession(sessionRef) {
-	const session = await sessionRef.data();
-
-	const panelRef = await db.collection("panels").doc(session.panel_id).get();
-	const panel = await panelRef.data();
-
-	const companyRef = await db
-		.collection("companies")
-		.doc(panel.company_id)
-		.get();
-	const company = await companyRef.data();
-
-	const interviews = await db
-		.collection("interviews")
-		.where("session_id", "==", sessionRef.id)
-		.get();
-
-	const panel_no = panel.panel_no;
-	const company_name = company.name;
-	const company_logo = company.photoUrl;
-	const interview_schedule = session.start_time.toDate().toISOString();
-	const queue_length = interviews.size;
-
+async function formatData(session_data) {
+	const panel = await getPanel(session_data.panel_id);
+	const company = await getCompany(panel.data.company_id);
 	return {
-		panel_no,
-		company_name,
-		company_logo,
-		interview_schedule,
-		queue_length,
+		...session_data,
+		panel_no: panel.data.panel_no,
+		company_name: company.data.name,
+		company_logo: company.data.photoUrl,
+		interview_schedule: session_data.start_time,
 	};
 }
 
-const SessionCard = ({ sessionRef }) => {
-	const [session, setSession] = useState({});
-	getSession(sessionRef).then((session_data) => {
-		setSession(session_data);
-	});
+//TODO: Add Checkin Fuctionality
+
+const SessionCard = ({ session }) => {
+	const [
+		{
+			company_logo,
+			company_name,
+			assigned_students,
+			isCheckinEnabled,
+			interview_schedule,
+			panel_no,
+		},
+		setSession,
+	] = useState({});
+	const [loading, setLoading] = useState(true);
+
+	const fetchSession = () => {
+		try {
+			db.collection("sessions")
+				.doc(session.id)
+				.onSnapshot((snapshot) => {
+					const session_data = snapshot.data();
+					formatData(session_data).then((session) => {
+						setSession(session);
+					});
+					setLoading(false);
+				});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchSession();
+	}, []);
 
 	return (
 		<Flex
-			boxShadow='md'
+			boxShadow='base'
 			rounded={5}
 			p={3}
 			flexDirection='column'
-			mb={5}
+			mt={5}
 			width='100%'>
-			<Flex justifyContent='space-between'>
-				<Flex alignItems='center'>
-					<Avatar
-						size='md'
-						src={session.company_logo}
-						mr={3}
-						backgroundColor='white'
-						boxShadow='lg'
-					/>
-					<Flex flexDirection='column'>
-						<Text fontSize='larger'>{session.company_name}</Text>
-						<Text fontSize='smaller'>Panel {session.panel_no}</Text>
+			<Skeleton isLoaded={!loading}>
+				<Flex justifyContent='space-between'>
+					<Flex alignItems='center'>
+						<Avatar
+							size='md'
+							src={company_logo}
+							mr={3}
+							backgroundColor='white'
+							boxShadow='lg'
+						/>
+						<Flex flexDirection='column'>
+							<Text fontSize='larger'>{company_name}</Text>
+							<Text fontSize='smaller'>Panel {panel_no}</Text>
+						</Flex>
+					</Flex>
+					<Flex alignItems='center'>
+						<Text fontSize='large'>
+							{assigned_students && assigned_students.length} people are
+							assigned
+						</Text>
+					</Flex>
+					<Flex alignItems='center'>
+						<Button colorScheme='blue' disabled={!isCheckinEnabled}>
+							Check-In
+						</Button>
 					</Flex>
 				</Flex>
-				<Flex alignItems='center'>
-					<Text fontSize='large'>
-						{session.queue_length} people in the queue
+				<Flex justifyContent='flex-end'>
+					<Text fontSize='xs'>
+						{interview_schedule &&
+							moment
+								.unix(interview_schedule.seconds)
+								.format("dddd, MMMM Do YYYY, h:mm:ss a")}
 					</Text>
 				</Flex>
-				<Flex alignItems='center'>
-					<Button colorScheme='blue'>Check-In</Button>
-				</Flex>
-			</Flex>
-			<Flex justifyContent='flex-end'>
-				<Text fontSize='xs'>{session.interview_schedule}</Text>
-			</Flex>
+			</Skeleton>
 		</Flex>
 	);
 };

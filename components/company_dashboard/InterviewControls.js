@@ -7,12 +7,15 @@ const InterviewControls = ({ data }) => {
 		<Flex height='-webkit-fit-content' flexDirection='column' p={3}>
 			<Heading size='md'>Upcoming Interview</Heading>
 			<CandidateDetails data={data} />
+			<Button colorScheme='teal' shadow='md' m={3}>
+				Next Interview
+			</Button>
 			<ButtonGroup flexDirection='column'>
-				<Button colorScheme='teal' shadow='md' m={3}>
-					Next Interview
-				</Button>
 				<Button colorScheme='orange' shadow='md' m={3}>
 					Enable Walkin Interviews
+				</Button>
+				<Button colorScheme='green' shadow='md' m={3}>
+					Enable CheckIns
 				</Button>
 			</ButtonGroup>
 		</Flex>

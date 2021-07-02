@@ -34,7 +34,8 @@ const SessionCard = ({ session }) => {
 
 	const fetchSession = () => {
 		try {
-			db.collection("sessions")
+			const unsubscribe = db
+				.collection("sessions")
 				.doc(session.id)
 				.onSnapshot((snapshot) => {
 					const session_data = snapshot.data();
@@ -43,13 +44,15 @@ const SessionCard = ({ session }) => {
 					});
 					setLoading(false);
 				});
+			return unsubscribe;
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	useEffect(() => {
-		fetchSession();
+		const unsubscribe = fetchSession();
+		return () => unsubscribe();
 	}, []);
 
 	return (

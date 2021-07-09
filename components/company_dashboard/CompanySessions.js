@@ -1,69 +1,38 @@
 import { Flex, Heading, useColorModeValue, Text } from "@chakra-ui/react";
 
-const sessions_data = [
-	{
-		session_id: 1,
-		company_name: "Google",
-		company_logo: "https://bit.ly/3g0VH4E",
-		panel_no: 2,
-		queue_length: 3,
-		session_schedule: "1st of June 9.00AM to 12.00PM",
-	},
-	{
-		session_id: 2,
-		company_name: "Microsoft",
-		company_logo: "https://bit.ly/2S2Ws53",
-		panel_no: 3,
-		queue_length: 5,
-		session_schedule: "2nd of June 9.00AM to 12.00PM",
-	},
-	{
-		session_id: 3,
-		company_name: "Google",
-		company_logo: "https://bit.ly/3g0VH4E",
-		panel_no: 2,
-		queue_length: 3,
-		session_schedule: "1st of June 9.00AM to 12.00PM",
-	},
-	{
-		session_id: 4,
-		company_name: "Microsoft",
-		company_logo: "https://bit.ly/2S2Ws53",
-		panel_no: 3,
-		queue_length: 5,
-		session_schedule: "2nd of June 9.00AM to 12.00PM",
-	},
-	{
-		session_id: 5,
-		company_name: "Microsoft",
-		company_logo: "https://bit.ly/2S2Ws53",
-		panel_no: 3,
-		queue_length: 5,
-		session_schedule: "2nd of June 9.00AM to 12.00PM",
-	},
-];
+const Sessions = (prop) => {
+	const allSessions = prop.allSessions;
 
-const Sessions = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	return (
 		<Flex
-			width='100%'
-			justifyContent='center'
+			width="100%"
+			justifyContent="center"
 			mt={3}
 			p={3}
 			background={cardBackground}
-			rounded={6}>
-			<Flex width='100%' flexDirection='column' alignItems='center'>
-				<Heading size='md' mb={3}>
+			rounded={6}
+		>
+			<Flex width="100%" flexDirection="column" alignItems="center">
+				<Heading size="md" mb={3}>
 					Sessions
 				</Heading>
 				<Flex
-					flexDirection='column'
-					width='100%'
-					overflow='scroll'
-					maxHeight={300}>
-					{sessions_data.map((session) => {
-						return <SessionCard data={session} key={session.session_id} />;
+					flexDirection="column"
+					width="100%"
+					overflow="scroll"
+					maxHeight={300}
+				>
+					{allSessions.map((session) => {
+						const sessionNumber = allSessions.indexOf(session) + 1;
+						return (
+							<SessionCard
+								sessionNumber={sessionNumber}
+								data={session}
+								key={session.sessionId}
+								activeSession={prop.activeSession}
+							/>
+						);
 					})}
 				</Flex>
 			</Flex>
@@ -71,18 +40,26 @@ const Sessions = () => {
 	);
 };
 
-const SessionCard = ({ data }) => {
+const SessionCard = ({ data, sessionNumber, activeSession }) => {
+	const startTime = new Date(data.start_time._seconds * 1000);
+	const endTime = new Date(data.end_time._seconds * 1000);
+	let activeColor = "red";
+	data.sessionId === activeSession ? (activeColor = "5px solid teal") : "";
+
 	return (
 		<Flex
-			shadow='md'
+			shadow="md"
 			rounded={5}
 			p={3}
-			flexDirection='column'
+			flexDirection="column"
 			mb={5}
-			width='100%'>
-			<Flex flexDirection='column'>
-				<Text fontSize='larger'>Session {data.session_id}</Text>
-				<Text fontSize='xs'>{data.session_schedule}</Text>
+			width="100%"
+			borderLeft={activeColor}
+		>
+			<Flex flexDirection="column">
+				<Text fontSize="larger">{`Sesion ${sessionNumber}`}</Text>
+				<Text fontSize="xs">{`${startTime.toDateString()}`}</Text>
+				<Text fontSize="xs">{`${startTime.toLocaleTimeString()} - ${endTime.toLocaleTimeString()}`}</Text>
 			</Flex>
 		</Flex>
 	);

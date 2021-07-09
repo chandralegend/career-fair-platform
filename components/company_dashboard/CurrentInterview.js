@@ -4,20 +4,27 @@ import CandidateDetails from "./CandidateDetails";
 
 const CurrentInterview = ({ data }) => {
 	return (
-		<Flex p={3} flexDirection='column' width='95%'>
-			<Heading size='md'>Current Interview</Heading>
+		<Flex p={3} flexDirection="column" width="95%">
+			<Heading size="md">Current Interview</Heading>
 			<CandidateDetails data={data} />
 			<Flex
-				alignItems='center'
-				width='100%'
-				flexDirection='row'
-				justifyContent='center'
-				mt={3}>
+				alignItems="center"
+				width="100%"
+				flexDirection="row"
+				justifyContent="center"
+				mt={3}
+			>
 				<ButtonGroup>
-					<Button colorScheme='green' shadow='md'>
+					<Button
+						colorScheme="green"
+						shadow="md"
+						onClick={() => {
+							window.open(data.meetLink);
+						}}
+					>
 						Join Meeting
 					</Button>
-					<Button colorScheme='orange' shadow='md'>
+					<Button colorScheme="orange" shadow="md">
 						Feedback
 					</Button>
 				</ButtonGroup>

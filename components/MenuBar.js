@@ -19,11 +19,13 @@ const MenuBar = () => {
 			</Heading>
 			<Flex>
 				<Box>
-					<Button onClick={signout}>Log Out</Button>
+					<Button onClick={signout} rounded='full'>
+						Log Out
+					</Button>
 				</Box>
 				<Box ml={2}>
 					<IconButton
-						rounded='md'
+						rounded='full'
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>

@@ -15,12 +15,13 @@ const PanelSelector = () => {
 			justifyItems='center'
 			p={3}
 			background={cardBackground}
-			rounded={7}
+			rounded='2xl'
 			width='100%'>
 			<Select
 				placeholder='Select Panel'
 				shadow='base'
 				value={panel}
+				rounded='2xl'
 				onChange={handleChange}>
 				<option value='panel1'>Panel 1</option>
 				<option value='panel2'>Panel 2</option>

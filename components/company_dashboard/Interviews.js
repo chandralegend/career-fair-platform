@@ -131,18 +131,18 @@ const Interviews = () => {
 		<Flex
 			direction='column'
 			bg={cardBackground}
-			rounded={7}
+			rounded='2xl'
 			shadow='md'
 			p={3}
 			height='-webkit-fit-content'
 			width='100%'>
 			<Tabs variant='solid-rounded' colorScheme='teal' align='center' m={2}>
 				<TabList>
-					<Tab>Assigned Candidates</Tab>
-					<Tab>WalkIn Candidates</Tab>
-					<Tab>In Queue</Tab>
-					<Tab>Completed</Tab>
-					<Tab>Panel History</Tab>
+					<Tab fontSize='sm'>Assigned Candidates</Tab>
+					<Tab fontSize='sm'>WalkIn Candidates</Tab>
+					<Tab fontSize='sm'>In Queue</Tab>
+					<Tab fontSize='sm'>Completed</Tab>
+					<Tab fontSize='sm'>Panel History</Tab>
 				</TabList>
 				<Stack overflow='scroll' height='-webkit-fit-content' maxHeight='80vh'>
 					<TabPanels>
@@ -241,7 +241,7 @@ function StudentRow({ data }) {
 			<Td>{data.department}</Td>
 			<Td maxWidth='200px'>{data.student_email}</Td>
 			<Td>
-				<Button colorScheme='teal' size='sm'>
+				<Button colorScheme='teal' size='sm' rounded='full'>
 					CV
 				</Button>
 			</Td>
@@ -257,10 +257,10 @@ function StudentRowInQ({ data }) {
 			<Td maxWidth='200px'>{data.student_email}</Td>
 			<Td>
 				<ButtonGroup>
-					<Button colorScheme='teal' size='sm'>
+					<Button colorScheme='teal' size='sm' rounded='full'>
 						CV
 					</Button>
-					<Button colorScheme='red' size='sm'>
+					<Button colorScheme='red' size='sm' rounded='full'>
 						Cancel
 					</Button>
 				</ButtonGroup>

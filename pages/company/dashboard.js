@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, SlideFade } from "@chakra-ui/react";
 
 import PrivateRoute from "../../components/PrivateRoute";
 import MenuBar from "../../components/MenuBar";
@@ -13,19 +13,21 @@ const dashboard = () => {
 		<PrivateRoute endsWith='@company.lk'>
 			<Flex height='100vh' flexDirection='column' padding={5}>
 				<MenuBar />
-				<Flex flexDirection='row' mt={3}>
-					<Flex flexDirection='column' width='20%' mr={3}>
-						<PanelSelector />
-						<CompanyDetails />
-						<CompanySessions />
+				<SlideFade in offsetY='30px'>
+					<Flex flexDirection='row' mt={3}>
+						<Flex flexDirection='column' width='20%' mr={3}>
+							<PanelSelector />
+							<CompanyDetails />
+							<CompanySessions />
+						</Flex>
+						<Flex width='55%'>
+							<Interviews />
+						</Flex>
+						<Flex width='25%' ml={3} flexDirection='column'>
+							<InterviewController />
+						</Flex>
 					</Flex>
-					<Flex width='55%'>
-						<Interviews />
-					</Flex>
-					<Flex width='25%' ml={3} flexDirection='column'>
-						<InterviewController />
-					</Flex>
-				</Flex>
+				</SlideFade>
 			</Flex>
 		</PrivateRoute>
 	);

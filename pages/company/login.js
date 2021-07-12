@@ -52,6 +52,7 @@ const login = () => {
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
 					<IconButton
+						rounded='full'
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
@@ -68,11 +69,12 @@ const login = () => {
 							direction='column'
 							background={formBackground}
 							p={12}
-							rounded={6}
+							rounded='2xl'
 							alignItems='center'
 							maxWidth='-webkit-max-content'>
 							<FormControl isInvalid={errors.username} mb={3}>
 								<Input
+									rounded='full'
 									id='username'
 									placeholder='Username'
 									variant='filled'
@@ -86,6 +88,7 @@ const login = () => {
 							</FormControl>
 							<FormControl isInvalid={errors.password} mb={6}>
 								<Input
+									rounded='full'
 									id='password'
 									placeholder='Password'
 									variant='filled'
@@ -99,6 +102,7 @@ const login = () => {
 								</FormErrorMessage>
 							</FormControl>
 							<Button
+								rounded='full'
 								colorScheme='teal'
 								type='submit'
 								width='100%'

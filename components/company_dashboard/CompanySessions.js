@@ -52,7 +52,7 @@ const Sessions = () => {
 			mt={3}
 			p={3}
 			background={cardBackground}
-			rounded={6}>
+			rounded='2xl'>
 			<Flex width='100%' flexDirection='column' alignItems='center'>
 				<Heading size='md' mb={3}>
 					Sessions

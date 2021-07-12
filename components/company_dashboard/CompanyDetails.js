@@ -13,7 +13,7 @@ const CompanyDetails = () => {
 			mt={3}
 			alignItems='center'
 			background={cardBackground}
-			rounded={7}
+			rounded='2xl'
 			width='100%'
 			p={3}>
 			<Avatar size='md' name={user.name} src={user.avatar_img} shadow='base' />

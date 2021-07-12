@@ -98,6 +98,7 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
 							</FormControl>
 							<FormControl isInvalid={errors.changePassword}>
 								<Button
+									rounded='full'
 									colorScheme='teal'
 									type='submit'
 									width='100%'

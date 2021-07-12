@@ -171,19 +171,14 @@ const studentRegister = () => {
 	};
 
 	return (
-		<Flex
-			flexDirection='column'
-			p={5}
-			backgroundImage='https://www.pexels.com/photo/2397414/download/'
-			backgroundSize='cover'
-			height='100vh'>
+		<Flex flexDirection='column' p={5} backgroundSize='cover' height='100vh'>
 			<Flex mb={6} alignItems='center' justifyContent='space-between'>
 				<Heading size='md' color='white'>
 					Career Fair Sign Up
 				</Heading>
 				<IconButton
 					onClick={toggleColorMode}
-					rounded='2xl'
+					rounded='full'
 					icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 				/>
 			</Flex>
@@ -192,7 +187,7 @@ const studentRegister = () => {
 				<Flex
 					width='30%'
 					p={6}
-					rounded={7}
+					rounded='2xl'
 					shadow='md'
 					flexDirection='column'
 					background={cardBackground}>
@@ -235,6 +230,7 @@ const studentRegister = () => {
 								<Flex>
 									<Input
 										id='username'
+										rounded='full'
 										placeholder='University ID'
 										variant='outline'
 										disabled={uidState}
@@ -252,6 +248,7 @@ const studentRegister = () => {
 							<FormControl mb={2} isInvalid={errors.fullname}>
 								<Flex>
 									<Input
+										rounded='full'
 										id='fullname'
 										placeholder='Full Name'
 										variant='outline'
@@ -267,6 +264,7 @@ const studentRegister = () => {
 							<FormControl mb={2} isInvalid={errors.email}>
 								<Flex>
 									<Input
+										rounded='full'
 										id='email'
 										placeholder='E-mail Address'
 										variant='outline'
@@ -282,6 +280,7 @@ const studentRegister = () => {
 							<FormControl mb={2} isInvalid={errors.phone}>
 								<Flex>
 									<Input
+										rounded='full'
 										id='phone'
 										placeholder='Phone Number'
 										variant='outline'
@@ -299,6 +298,7 @@ const studentRegister = () => {
 							<FormControl mb={2} isInvalid={errors.department}>
 								<Flex>
 									<Select
+										rounded='full'
 										placeholder='Select Department'
 										size='md'
 										variant='outline'
@@ -332,6 +332,7 @@ const studentRegister = () => {
 							<FormControl mb={2} isInvalid={errors.password}>
 								<Flex>
 									<Input
+										rounded='full'
 										id='password'
 										placeholder='Password'
 										variant='outline'
@@ -354,6 +355,7 @@ const studentRegister = () => {
 							<FormControl mb={2} isInvalid={errors.confirmpassword}>
 								<Flex>
 									<Input
+										rounded='full'
 										id='confirmpassword'
 										placeholder='Confirm Password'
 										variant='outline'
@@ -374,6 +376,7 @@ const studentRegister = () => {
 								</FormErrorMessage>
 							</FormControl>
 							<Button
+								rounded='full'
 								mt={2}
 								isLoading={loadingFormsubmit}
 								type='submit'
@@ -390,7 +393,7 @@ const studentRegister = () => {
 					ml={3}
 					background={cardBackground}
 					shadow='md'
-					rounded={10}
+					rounded='2xl'
 					flexDirection='column'
 					width='100%'
 					height='-webkit-fit-content'
@@ -408,6 +411,15 @@ const studentRegister = () => {
 						</Center>
 					)}
 				</Flex>
+			</Flex>
+			<Flex mt={10} justifyContent='flex-end'>
+				<Button
+					disabled={!uidState}
+					colorScheme='teal'
+					rounded='full'
+					hidden={!uidState}>
+					Finish SignUp
+				</Button>
 			</Flex>
 		</Flex>
 	);

@@ -95,7 +95,7 @@ const UserDetails = () => {
 				p={6}
 				height='-webkit-fit-content'
 				width='100%'
-				rounded={6}
+				rounded='2xl'
 				background={cardBackground}
 				flexDirection='column'
 				alignItems='center'
@@ -121,6 +121,7 @@ const UserDetails = () => {
 				<Center flexDirection='column'>
 					<ButtonGroup mt={4} mb={2}>
 						<Button
+							rounded='full'
 							boxShadow='2xl'
 							variant='solid'
 							isLoading={uploadingCV}
@@ -133,13 +134,14 @@ const UserDetails = () => {
 							ref={hiddenFileInput}
 							onChange={handleCvUpload}></Input>
 						<Button
+							rounded='full'
 							boxShadow='2xl'
 							disabled={!user.cvUrl}
 							onClick={() => window.open(user.cvUrl, "_blank")}>
 							View CV
 						</Button>
 					</ButtonGroup>
-					<Button onClick={onOpen} width='100%' boxShadow='2xl'>
+					<Button onClick={onOpen} width='100%' boxShadow='2xl' rounded='full'>
 						Change Password
 					</Button>
 				</Center>

@@ -38,7 +38,8 @@ const CandidateDetails = ({ data }) => {
 					<Flex background={cardBackground} alignItems='center' ml={5}>
 						<IconButton
 							onClick={() => console.log("CV Button Clicked")}
-							icon={<ExternalLinkIcon />}>
+							icon={<ExternalLinkIcon />}
+							rounded='full'>
 							CV
 						</IconButton>
 					</Flex>

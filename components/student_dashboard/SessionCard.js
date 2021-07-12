@@ -58,12 +58,12 @@ const SessionCard = ({ session }) => {
 	return (
 		<Flex
 			boxShadow='base'
-			rounded={5}
+			rounded='xl'
 			p={3}
 			flexDirection='column'
 			mt={5}
 			width='100%'>
-			<Skeleton isLoaded={!loading}>
+			<Skeleton isLoaded={!loading} rounded='xl' fadeDuration={3}>
 				<Flex justifyContent='space-between'>
 					<Flex alignItems='center'>
 						<Avatar
@@ -85,7 +85,10 @@ const SessionCard = ({ session }) => {
 						</Text>
 					</Flex>
 					<Flex alignItems='center'>
-						<Button colorScheme='blue' disabled={!isCheckinEnabled}>
+						<Button
+							colorScheme='blue'
+							disabled={!isCheckinEnabled}
+							rounded='full'>
 							Check-In
 						</Button>
 					</Flex>

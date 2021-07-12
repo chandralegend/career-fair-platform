@@ -30,7 +30,7 @@ const InterviewController = () => {
 			flexDirection='column'
 			background={cardBackground}
 			overflow='auto'
-			rounded={7}
+			rounded='2xl'
 			p={3}>
 			<CurrentInterview data={data[0]} />
 			<InterviewControls data={data[1]} />

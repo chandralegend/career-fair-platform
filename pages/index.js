@@ -22,10 +22,10 @@ const index = () => {
 			alignItems='center'
 			justifyContent='center'
 			direction='column'
-			backgroundImage='https://www.pexels.com/photo/2397414/download/'
 			backgroundSize='cover'>
-			<Box position='absolute' right={5} top={5} rounded='2xl'>
+			<Box position='absolute' right={5} top={5}>
 				<IconButton
+					rounded='full'
 					onClick={toggleColorMode}
 					icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 				/>
@@ -38,6 +38,7 @@ const index = () => {
 					<Flex alignContent='center'>
 						<Button
 							boxShadow='2xl'
+							rounded='full'
 							boxSize={150}
 							mr={5}
 							onClick={() => router.push("/student/login")}
@@ -49,6 +50,7 @@ const index = () => {
 						<Button
 							boxShadow='2xl'
 							boxSize={150}
+							rounded='full'
 							onClick={() => router.push("/company/login")}
 							flex
 							flexDirection='column'

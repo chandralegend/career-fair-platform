@@ -15,7 +15,7 @@ const Interviews = () => {
 			mr={3}>
 			<Flex
 				p={3}
-				rounded={6}
+				rounded='2xl'
 				background={cardBackground}
 				flexDirection='column'
 				alignItems='center'
@@ -27,7 +27,7 @@ const Interviews = () => {
 			<Flex
 				p={3}
 				height='-webkit-fit-content'
-				rounded={6}
+				rounded='2xl'
 				background={cardBackground}
 				flexDirection='column'
 				alignItems='center'

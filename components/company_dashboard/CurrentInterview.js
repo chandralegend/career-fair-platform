@@ -14,10 +14,10 @@ const CurrentInterview = ({ data }) => {
 				justifyContent='center'
 				mt={3}>
 				<ButtonGroup>
-					<Button colorScheme='green' shadow='md'>
+					<Button colorScheme='green' shadow='md' rounded='full'>
 						Join Meeting
 					</Button>
-					<Button colorScheme='orange' shadow='md'>
+					<Button colorScheme='orange' shadow='md' rounded='full'>
 						Feedback
 					</Button>
 				</ButtonGroup>

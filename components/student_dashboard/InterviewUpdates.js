@@ -20,7 +20,7 @@ const InterviewUpdates = () => {
 	};
 
 	return (
-		<Flex p={6} flexDirection='column' width='100%'>
+		<Flex p={6} flexDirection='column' width='100%' rounded='2xl'>
 			{data && Object.keys(data).length > 0 ? (
 				<Flex>
 					<Flex flexDirection='column' width='30%'>
@@ -35,12 +35,14 @@ const InterviewUpdates = () => {
 					</Flex>
 					<Flex flexDirection='column' width='30%'>
 						<Button
+							rounded='full'
 							mb={2}
 							colorScheme='red'
 							disabled={data.queue_position === data.current_position}>
 							Leave Queue
 						</Button>
 						<Button
+							rounded='full'
 							colorScheme='green'
 							disabled={data.queue_position !== data.current_position}>
 							Join Meeting

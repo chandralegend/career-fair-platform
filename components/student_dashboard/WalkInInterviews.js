@@ -30,7 +30,7 @@ const WalkInInterviews = () => {
 				p={6}
 				height='-webkit-fit-content'
 				width='100%'
-				rounded={6}
+				rounded='2xl'
 				background={cardBackground}
 				flexDirection='column'
 				alignItems='center'
@@ -59,7 +59,7 @@ const WalkInInterviews = () => {
 const WalkInInterviewCard = ({ data }) => {
 	const { company_name, company_logo, n_people } = data;
 	return (
-		<Flex shadow='md' rounded={5} p={3} flexDirection='column' mb={5}>
+		<Flex shadow='md' rounded='xl' p={3} flexDirection='column' mb={5}>
 			<Flex mb={3}>
 				<Avatar size='md' src={company_logo} mr={3} backgroundColor='white' />
 				<Flex flexDirection='column'>
@@ -67,7 +67,9 @@ const WalkInInterviewCard = ({ data }) => {
 					<Text fontSize='small'>{n_people} people in queue</Text>
 				</Flex>
 			</Flex>
-			<Button colorScheme='teal'>Check-In</Button>
+			<Button colorScheme='teal' rounded='full'>
+				Check-In
+			</Button>
 		</Flex>
 	);
 };

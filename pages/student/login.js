@@ -44,11 +44,11 @@ const login = () => {
 			alignItems='center'
 			justifyContent='center'
 			direction='column'
-			backgroundImage='https://www.pexels.com/photo/2397414/download/'
 			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
-				<Box position='absolute' right={5} top={5} rounded='2xl'>
+				<Box position='absolute' right={5} top={5}>
 					<IconButton
+						rounded='full'
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
@@ -65,7 +65,7 @@ const login = () => {
 							direction='column'
 							background={formBackground}
 							p={12}
-							rounded={6}
+							rounded='2xl'
 							alignItems='center'
 							maxWidth='-webkit-max-content'>
 							<FormControl isInvalid={errors.username} mb={3}>
@@ -99,6 +99,7 @@ const login = () => {
 							</FormControl>
 							<FormControl isInvalid={errors.submitError}>
 								<Button
+									rounded='full'
 									colorScheme='teal'
 									type='submit'
 									width='100%'

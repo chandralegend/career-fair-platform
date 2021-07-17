@@ -6,7 +6,7 @@ const CompanySessions = ({ sessions_data, active_session }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 
 	return (
-		<Flex width='100%' justifyContent='center' mt={3} p={3} background={cardBackground} rounded='2xl'>
+		<Flex width='100%' justifyContent='center' mt={3} shadow='md' p={3} background={cardBackground} rounded='2xl'>
 			<Flex width='100%' flexDirection='column' alignItems='center'>
 				<Heading size='md'>Sessions</Heading>
 				<Flex flexDirection='column' width='100%' overflow='scroll' maxHeight={300}>

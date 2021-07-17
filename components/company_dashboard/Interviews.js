@@ -16,7 +16,7 @@ import {
 	Tbody,
 	ButtonGroup,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useInterview } from "../../lib/interviews";
 import { getStudent } from "../../lib/api";
 
@@ -29,7 +29,7 @@ const Interviews = ({ session }) => {
 		if (session) {
 			setAssignedCandidates(session.assigned_students);
 		}
-	}, [session]);
+	}, [session, completedInterviews, walkinInterviews, inQueueInterviews]);
 
 	return (
 		<Flex
@@ -63,7 +63,9 @@ const Interviews = ({ session }) => {
 								</Thead>
 								<Tbody>
 									{assignedCandidates &&
-										assignedCandidates.map((student) => <StudentRow data={student} key={student} type='assigned' />)}
+										assignedCandidates.map((student_id) => (
+											<StudentRow student_id={student_id} key={student_id} type='assigned' />
+										))}
 								</Tbody>
 							</Table>
 						</TabPanel>
@@ -81,7 +83,7 @@ const Interviews = ({ session }) => {
 								<Tbody>
 									{walkinInterviews &&
 										walkinInterviews.map((interview) => (
-											<StudentRow data={interview} key={interview.student_id} type='walkin' />
+											<StudentRow student_id={interview.student_id} key={interview.student_id} type='walkin' />
 										))}
 								</Tbody>
 							</Table>
@@ -100,7 +102,7 @@ const Interviews = ({ session }) => {
 								<Tbody width='100%'>
 									{inQueueInterviews &&
 										inQueueInterviews.map((interview) => (
-											<StudentRow data={interview} key={interview.student_id} type='inQueue' />
+											<StudentRow student_id={interview.student_id} key={interview.student_id} type='inQueue' />
 										))}
 								</Tbody>
 							</Table>
@@ -119,7 +121,7 @@ const Interviews = ({ session }) => {
 								<Tbody width='100%'>
 									{completedInterviews &&
 										completedInterviews.map((interview) => (
-											<StudentRow data={interview} key={interview.student_id} type='completed' />
+											<StudentRow student_id={interview.student_id} key={interview.student_id} type='completed' />
 										))}
 								</Tbody>
 							</Table>
@@ -128,17 +130,23 @@ const Interviews = ({ session }) => {
 						<TabPanel>TODO</TabPanel>
 					</TabPanels>
 				</Stack>
+				<Button rounded='full' colorScheme='pink' width='-webkit-fit-content' onClick={() => Refresh()}>
+					Refresh
+				</Button>
 			</Tabs>
-			<Button onClick={() => Refresh()}>Refresh</Button>
 		</Flex>
 	);
 };
 
-function StudentRow({ data, type }) {
-	if (type === "assigned") {
-		const [student, setStudent] = useState();
-		getStudent(data).then((res) => setStudent(res.data));
+const StudentRow = ({ student_id, type }) => {
+	const [student, setStudent] = useState();
 
+	useEffect(() => {
+		console.count("Getting Student Data");
+		getStudent(student_id).then((res) => setStudent(res.data));
+	}, []);
+
+	if (type === "assigned") {
 		return (
 			<Tr>
 				<Td maxWidth='200px'>{student && student.name}</Td>
@@ -159,8 +167,6 @@ function StudentRow({ data, type }) {
 			</Tr>
 		);
 	} else {
-		const [student, setStudent] = useState();
-		getStudent(data.student_id).then((res) => setStudent(res.data));
 		return (
 			<Tr>
 				<Td maxWidth='200px'>{student && student.name}</Td>
@@ -172,12 +178,13 @@ function StudentRow({ data, type }) {
 						<Button
 							colorScheme='teal'
 							size='sm'
+							rounded='full'
 							onClick={() => {
 								window.open(student.cvUrl, "_blank");
 							}}>
 							CV
 						</Button>
-						<Button colorScheme='red' size='sm' hidden={type !== "walkin"}>
+						<Button colorScheme='red' size='sm' rounded='full' hidden={type !== "walkin" || type === "completed"}>
 							Cancel
 						</Button>
 					</ButtonGroup>
@@ -185,5 +192,6 @@ function StudentRow({ data, type }) {
 			</Tr>
 		);
 	}
-}
-export default Interviews;
+};
+
+export default React.memo(Interviews);

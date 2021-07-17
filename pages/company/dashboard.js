@@ -1,5 +1,6 @@
 import { Flex, SlideFade, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import React from "react";
 
 import PrivateRoute from "../../components/PrivateRoute";
 import MenuBar from "../../components/MenuBar";
@@ -35,6 +36,7 @@ const dashboard = () => {
 
 	useEffect(() => {
 		if (user) {
+			console.count("Getting Panels and Sessions");
 			getAllPanels(user.uuid)
 				.then((res) => {
 					setPanels(res.data);
@@ -80,4 +82,4 @@ const dashboard = () => {
 	);
 };
 
-export default dashboard;
+export default React.memo(dashboard);

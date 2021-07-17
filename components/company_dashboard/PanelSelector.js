@@ -4,7 +4,14 @@ const PanelSelector = ({ selected, onSelect, data }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 
 	return (
-		<Flex alignItems='center' justifyItems='center' p={3} background={cardBackground} rounded='2xl' width='100%'>
+		<Flex
+			alignItems='center'
+			justifyItems='center'
+			p={3}
+			background={cardBackground}
+			rounded='2xl'
+			width='100%'
+			shadow='md'>
 			<Select placeholder='Select Panel' shadow='base' value={selected} onChange={onSelect}>
 				{data &&
 					data.map((panel) => {

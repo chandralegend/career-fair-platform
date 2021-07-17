@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import Router from "next/router";
 import {
 	Box,
 	Button,
@@ -25,30 +26,22 @@ const login = () => {
 		formState: { errors },
 		setError,
 	} = useForm();
-	const { loading, signin, setLoading } = useAuth();
+	const { loading, signin } = useAuth();
 
 	function onSubmit(values) {
-		signin(
-			values.username + "@company.lk",
-			values.password,
-			"/company/dashboard"
-		)
+		signin(values.username + "@company.lk", values.password, "/company/dashboard")
 			.then()
 			.catch((err) => {
 				setError("password", {
 					message: "Invalid Credentials",
 					shouldFocus: false,
 				});
-				setLoading(false);
+				console.log(err);
 			});
 	}
 
 	return (
-		<Flex
-			height='100vh'
-			alignItems='center'
-			justifyContent='center'
-			direction='column'>
+		<Flex height='100vh' alignItems='center' justifyContent='center' direction='column'>
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
 					<IconButton
@@ -101,13 +94,7 @@ const login = () => {
 									{errors.password && errors.password.message}
 								</FormErrorMessage>
 							</FormControl>
-							<Button
-								rounded='full'
-								colorScheme='teal'
-								type='submit'
-								width='100%'
-								mb={3}
-								isLoading={loading}>
+							<Button rounded='full' colorScheme='teal' type='submit' width='100%' mb={3} isLoading={loading}>
 								Log in
 							</Button>
 						</Flex>

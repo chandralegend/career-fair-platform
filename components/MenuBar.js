@@ -14,9 +14,7 @@ const MenuBar = () => {
 	const { signout } = useAuth();
 	return (
 		<Flex width='100%' alignItems='center' justifyContent='space-between'>
-			<Heading size='md' color='white'>
-				EE Career Fair
-			</Heading>
+			<Heading size='md'>EE Career Fair</Heading>
 			<Flex>
 				<Box>
 					<Button onClick={signout} rounded='full'>

@@ -54,7 +54,7 @@ const login = () => {
 					/>
 				</Box>
 				<Center>
-					<Heading mb={10} size='2xl' color='white'>
+					<Heading mb={10} size='2xl'>
 						EE Career Fair 2021
 					</Heading>
 				</Center>

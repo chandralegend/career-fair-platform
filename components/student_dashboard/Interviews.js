@@ -6,13 +6,7 @@ import AssignedSessions from "./AssignedSessions";
 const Interviews = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	return (
-		<Flex
-			width='56%'
-			justifyContent='center'
-			maxHeight='60%'
-			flexDirection='column'
-			ml={3}
-			mr={3}>
+		<Flex width='56%' maxHeight='60%' flexDirection='column' ml={3} mr={3}>
 			<Flex
 				p={3}
 				rounded='2xl'

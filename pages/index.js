@@ -32,7 +32,7 @@ const index = () => {
 			</Box>
 			<SlideFade in offsetY='30px'>
 				<Flex alignItems='center' justifyContent='center' direction='column'>
-					<Heading size='md' mb={5} color='white'>
+					<Heading size='md' mb={5}>
 						Login As
 					</Heading>
 					<Flex alignContent='center'>

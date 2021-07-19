@@ -23,7 +23,7 @@ const CurrentInterview = () => {
 		<Flex p={3} flexDirection='column' width='95%'>
 			<Heading size='md'>Current Interview</Heading>
 			<CandidateDetails data={student} />
-			<Flex alignItems='center' width='100%' justifyContent='space-between' mt={3}>
+			<Flex alignItems='center' width='100%' justifyContent='space-evenly' mt={3}>
 				<Button
 					colorScheme='green'
 					shadow='md'

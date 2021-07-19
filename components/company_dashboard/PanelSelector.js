@@ -1,5 +1,8 @@
 import { Flex, Select, useColorModeValue } from "@chakra-ui/react";
 
+//TODO: Create a Better Panel Selector with a modal
+//TODO: Handle Already Online Panels Avoid users login to different Panel when someoone is already in it
+
 const PanelSelector = ({ selected, onSelect, data }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 

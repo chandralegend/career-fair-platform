@@ -1,18 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-	Avatar,
-	Box,
-	Text,
-	Flex,
-	Badge,
-	Spacer,
-	Button,
-	Wrap,
-	useToast,
-	toast,
-	Center,
-	AvatarBadge,
-} from "@chakra-ui/react";
+import { Avatar, Box, Text, Flex, Button, Wrap, useToast, AvatarBadge } from "@chakra-ui/react";
 
 import { getAllCompanies, updateStudentPriorityList } from "../lib/api";
 
@@ -34,13 +21,7 @@ const CompanyTile = ({ uid, name, onSelect, selected, img }) => {
 			height={200}
 			width={200}>
 			<Flex flexDirection='column' p={3} alignItems='center'>
-				<Avatar
-					size='xl'
-					name={name}
-					src={img}
-					border={isSelected ? "3px solid lightgreen" : ""}
-					mb={3}
-					fontSize={30}>
+				<Avatar size='xl' name={name} src={img} border={isSelected ? "3px solid lightgreen" : ""} mb={3} fontSize={30}>
 					<AvatarBadge
 						visibility={isSelected ? "visible" : "hidden"}
 						color='black'
@@ -69,7 +50,7 @@ const CompanyChooser = ({ userID }) => {
 	}, []);
 
 	const handleSelect = (key) => {
-		const temp = selectedList;
+		const temp = [...selectedList];
 		if (temp.includes(key)) {
 			setselectedList(temp.filter((value) => value !== key));
 		} else {

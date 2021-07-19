@@ -7,16 +7,30 @@ const InterviewController = ({ panel_id }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 
 	return (
-		<Flex
-			width='100%'
-			justifyContent='center'
-			flexDirection='column'
-			background={cardBackground}
-			overflow='auto'
-			rounded='2xl'
-			p={3}>
-			<CurrentInterview />
-			<InterviewControls panel_id={panel_id} />
+		<Flex flexDirection='column'>
+			<Flex
+				width='100%'
+				justifyContent='center'
+				flexDirection='column'
+				background={cardBackground}
+				overflow='auto'
+				shadow='md'
+				rounded='2xl'
+				p={3}>
+				<CurrentInterview />
+			</Flex>
+			<Flex
+				width='100%'
+				justifyContent='center'
+				flexDirection='column'
+				background={cardBackground}
+				overflow='auto'
+				rounded='2xl'
+				shadow='md'
+				mt={3}
+				p={3}>
+				<InterviewControls panel_id={panel_id} />
+			</Flex>
 		</Flex>
 	);
 };

@@ -55,7 +55,7 @@ const Interviews = ({ session }) => {
 								<Thead>
 									<Tr>
 										<Th>Student Name</Th>
-										<Th>University ID</Th>
+										<Th>Uni ID</Th>
 										<Th>Department</Th>
 										<Th>Email</Th>
 										<Th></Th>
@@ -142,7 +142,7 @@ const StudentRow = ({ student_id, type }) => {
 	const [student, setStudent] = useState();
 
 	useEffect(() => {
-		console.count("Getting Student Data");
+		// console.count("Getting Student Data");
 		getStudent(student_id).then((res) => setStudent(res.data));
 	}, []);
 

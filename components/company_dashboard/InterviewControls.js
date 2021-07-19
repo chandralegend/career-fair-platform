@@ -5,6 +5,8 @@ import { useInterview } from "../../lib/interviews";
 import CandidateDetails from "./CandidateDetails";
 import { getStudent } from "../../lib/api";
 
+//TODO: Comeup with a better solution to Enable Checkin and Walkin Actions
+
 const InterviewControls = ({ panel_id }) => {
 	const { inQueueInterviews, NextInterview, EnableCheckin, EnableWalkin } = useInterview();
 	const [student, setStudent] = useState();
@@ -34,21 +36,20 @@ const InterviewControls = ({ panel_id }) => {
 				}}>
 				Next Interview
 			</Button>
-			<ButtonGroup flexDirection='column'>
+			<Flex flexDirection='row' justifyContent='space-evenly'>
 				<Button
 					colorScheme='orange'
 					shadow='md'
-					m={3}
 					rounded='full'
 					onClick={() => {
 						EnableWalkin(panel_id);
 					}}>
-					Enable Walkin Interviews
+					Walkin
 				</Button>
-				<Button colorScheme='green' shadow='md' m={3} rounded='full' onClick={() => EnableCheckin(panel_id)}>
-					Enable CheckIns
+				<Button colorScheme='green' shadow='md' rounded='full' onClick={() => EnableCheckin(panel_id)}>
+					CheckIn
 				</Button>
-			</ButtonGroup>
+			</Flex>
 		</Flex>
 	);
 };

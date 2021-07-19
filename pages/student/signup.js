@@ -91,11 +91,7 @@ const studentRegister = () => {
 				}
 			} else {
 				try {
-					const response = await signup(
-						data.username + "@uom.lk",
-						data.password,
-						info
-					);
+					const response = await signup(data.username + "@uom.lk", data.password, info);
 
 					if (response.response.status == 200) {
 						setuidState(response.uid);
@@ -147,9 +143,7 @@ const studentRegister = () => {
 				reader.onloadend = () => {
 					setimageData(reader.result);
 				};
-				const fileName =
-					new Date().getTime().toString() +
-					(Math.ceil(Math.random() * 1000000) + 100000).toString();
+				const fileName = new Date().getTime().toString() + (Math.ceil(Math.random() * 1000000) + 100000).toString();
 
 				const locationRef = storage.ref("Student_Photos").child(fileName);
 				await locationRef.put(file, { contentType: file.type });
@@ -173,9 +167,7 @@ const studentRegister = () => {
 	return (
 		<Flex flexDirection='column' p={5} backgroundSize='cover' height='100vh'>
 			<Flex mb={6} alignItems='center' justifyContent='space-between'>
-				<Heading size='md' color='white'>
-					Career Fair Sign Up
-				</Heading>
+				<Heading size='md'>Career Fair Sign Up</Heading>
 				<IconButton
 					onClick={toggleColorMode}
 					rounded='full'
@@ -184,13 +176,7 @@ const studentRegister = () => {
 			</Flex>
 
 			<Flex>
-				<Flex
-					width='30%'
-					p={6}
-					rounded='2xl'
-					shadow='md'
-					flexDirection='column'
-					background={cardBackground}>
+				<Flex width='30%' p={6} rounded='2xl' shadow='md' flexDirection='column' background={cardBackground}>
 					<Center>
 						<Heading size='md' mb={5}>
 							Student Details
@@ -204,11 +190,7 @@ const studentRegister = () => {
 										<label htmlFor='avatarUpload'>
 											<Avatar size='2xl' src={imageData}>
 												<AvatarBadge boxSize='1.25em' bg='teal.300'>
-													{loadingImage ? (
-														<Spinner color='white' />
-													) : (
-														<Icon p={3} color='white' as={AddIcon}></Icon>
-													)}
+													{loadingImage ? <Spinner color='white' /> : <Icon p={3} color='white' as={AddIcon}></Icon>}
 												</AvatarBadge>
 											</Avatar>
 										</label>
@@ -305,24 +287,14 @@ const studentRegister = () => {
 										{...register("department", {
 											required: "Select the Department",
 										})}>
-										<option value='Electrical Engineering'>
-											Electrical Engineering
-										</option>
-										<option value='Computer Science and Engineering'>
-											Computer Science and Engineering
-										</option>
+										<option value='Electrical Engineering'>Electrical Engineering</option>
+										<option value='Computer Science and Engineering'>Computer Science and Engineering</option>
 										<option value='Electronics and Telecommunications Engineering'>
 											Electronics and Telecommunications Engineering
 										</option>
-										<option value='Mechanical Engineering'>
-											Mechanical Engineering
-										</option>
-										<option value='Material Engineering'>
-											Material Engineering
-										</option>
-										<option value='Chemical Engineering'>
-											Chemical Engineering
-										</option>
+										<option value='Mechanical Engineering'>Mechanical Engineering</option>
+										<option value='Material Engineering'>Material Engineering</option>
+										<option value='Chemical Engineering'>Chemical Engineering</option>
 									</Select>
 								</Flex>
 								<FormErrorMessage flex justifyContent='center'>
@@ -342,8 +314,7 @@ const studentRegister = () => {
 											required: "Password is Required",
 											minLength: {
 												value: 6,
-												message:
-													"Your password should have at least 6 charactors",
+												message: "Your password should have at least 6 charactors",
 											},
 										})}
 									/>
@@ -365,8 +336,7 @@ const studentRegister = () => {
 											required: "Password is Required",
 											minLength: {
 												value: 6,
-												message:
-													"Your password should have at least 6 charactors",
+												message: "Your password should have at least 6 charactors",
 											},
 										})}
 									/>
@@ -413,11 +383,7 @@ const studentRegister = () => {
 				</Flex>
 			</Flex>
 			<Flex mt={10} justifyContent='flex-end'>
-				<Button
-					disabled={!uidState}
-					colorScheme='teal'
-					rounded='full'
-					hidden={!uidState}>
+				<Button disabled={!uidState} colorScheme='teal' rounded='full' hidden={!uidState}>
 					Finish SignUp
 				</Button>
 			</Flex>

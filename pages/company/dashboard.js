@@ -23,6 +23,7 @@ const dashboard = () => {
 
 	function handleSelect(e) {
 		setPanel(e.target.value);
+		//TODO: Handle Panel
 	}
 
 	function getCurrentSession(sessions) {
@@ -36,7 +37,7 @@ const dashboard = () => {
 
 	useEffect(() => {
 		if (user) {
-			console.count("Getting Panels and Sessions");
+			// console.count("Getting Panels and Sessions");
 			getAllPanels(user.uuid)
 				.then((res) => {
 					setPanels(res.data);
@@ -74,6 +75,7 @@ const dashboard = () => {
 							</InterviewProvider>
 						</Flex>
 					) : (
+						//TODO: Better No Sessions Available Component
 						<Text>No More Sessions Available</Text>
 					)}
 				</SlideFade>

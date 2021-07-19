@@ -69,7 +69,7 @@ const dashboard = () => {
 									<Interviews session={currentSession} />
 								</Flex>
 								<Flex width='25%' ml={3} flexDirection='column'>
-									{/* <InterviewController panel_id={panel} /> */}
+									<InterviewController panel_id={panel} />
 								</Flex>
 							</InterviewProvider>
 						</Flex>

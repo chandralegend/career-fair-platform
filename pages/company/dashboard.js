@@ -23,7 +23,7 @@ const dashboard = () => {
 
 	function handleSelect(e) {
 		setPanel(e.target.value);
-		//TODO: Handle Panel
+		//TODO: Handle Panel @Janith
 	}
 
 	function getCurrentSession(sessions) {
@@ -75,7 +75,7 @@ const dashboard = () => {
 							</InterviewProvider>
 						</Flex>
 					) : (
-						//TODO: Better No Sessions Available Component
+						//TODO: Better No Sessions Available Component @Geshan
 						<Text>No More Sessions Available</Text>
 					)}
 				</SlideFade>

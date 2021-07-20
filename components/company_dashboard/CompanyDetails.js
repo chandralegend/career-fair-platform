@@ -1,7 +1,7 @@
 import { Flex, Avatar, useColorModeValue, Heading } from "@chakra-ui/react";
 import { useAuth } from "../../lib/auth";
 
-//TODO: Add details about the Representative Assigned to the Panel (Name, Contacts)
+//TODO: Add details about the Representative Assigned to the Panel (Name, Contacts and Also Change Password Button) @Jehan
 
 const CompanyDetails = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");

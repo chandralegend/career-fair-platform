@@ -5,7 +5,7 @@ import { useInterview } from "../../lib/interviews";
 import CandidateDetails from "./CandidateDetails";
 import { getStudent } from "../../lib/api";
 
-//TODO: Comeup with a better solution to Enable Checkin and Walkin Actions
+//TODO: Comeup with a better solution to Enable Checkin and Walkin Actions @Janith
 
 const InterviewControls = ({ panel_id }) => {
 	const { inQueueInterviews, NextInterview, EnableCheckin, EnableWalkin } = useInterview();

@@ -2,7 +2,7 @@ import { Flex, Avatar, Text, Box, IconButton, useColorModeValue } from "@chakra-
 
 import { AttachmentIcon } from "@chakra-ui/icons";
 
-//TODO: Fix Overflow
+//TODO: Fix Overflow @Geshan
 
 const CandidateDetails = ({ data }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
@@ -36,7 +36,7 @@ const CandidateDetails = ({ data }) => {
 			</Flex>
 		);
 	} else {
-		//TODO: Better Component for Not Available
+		//TODO: Better Component for Not Available @Geshan
 		return <div>Not Available</div>;
 	}
 };

@@ -55,7 +55,7 @@ const Interviews = ({ session }) => {
 
 	return (
 		<Flex direction='column' bg={cardBackground} shadow='md' p={3} height='-webkit-fit-content' width='100%'>
-			<Tabs variant='solid-rounded' colorScheme='pink' align='center' m={2} isLazy>
+			<Tabs variant='solid-rounded' colorScheme='pink' align='center' m={2}>
 				<TabList>
 					<Tab fontSize='sm'>Assigned Candidates</Tab>
 					<Tab fontSize='sm'>WalkIn Candidates</Tab>

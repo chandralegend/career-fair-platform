@@ -61,7 +61,7 @@ const dashboard = () => {
 					{currentSession ? (
 						<Flex flexDirection='row' mt={3}>
 							<Flex flexDirection='column' width='20%' mr={3}>
-								<PanelSelector data={panels} selected={panel} onSelect={handleSelect} />
+								<PanelSelector data={panels} selected={panel} onSelect={handleSelect} setPanel={setPanel} />
 								<CompanyDetails />
 								<CompanySessions sessions_data={sessions} active_session={currentSession} />
 							</Flex>

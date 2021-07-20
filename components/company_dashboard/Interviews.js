@@ -17,6 +17,11 @@ import {
 	ButtonGroup,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
+import Lottie from "react-lottie";
+
+import UnderConstructionLottie from "../../lib/lottie_animations/underconstruction.json";
+import EmptyLottie from "../../lib/lottie_animations/empty.json";
+
 import { useInterview } from "../../lib/interviews";
 import { getStudent } from "../../lib/api";
 
@@ -25,6 +30,23 @@ const Interviews = ({ session }) => {
 	const [assignedCandidates, setAssignedCandidates] = useState();
 	const { completedInterviews, walkinInterviews, inQueueInterviews, Refresh } = useInterview();
 
+	const underConstructionLottie = {
+		loop: true,
+		autoplay: true,
+		animationData: UnderConstructionLottie,
+		rendererSettings: {
+			preserveAspectRatio: "xMidYMid slice",
+		},
+	};
+	const emptyLottie = {
+		loop: true,
+		autoplay: true,
+		animationData: EmptyLottie,
+		rendererSettings: {
+			preserveAspectRatio: "xMidYMid slice",
+		},
+	};
+
 	useEffect(() => {
 		if (session) {
 			setAssignedCandidates(session.assigned_students);
@@ -32,15 +54,8 @@ const Interviews = ({ session }) => {
 	}, [session, completedInterviews, walkinInterviews, inQueueInterviews]);
 
 	return (
-		<Flex
-			direction='column'
-			bg={cardBackground}
-			rounded='2xl'
-			shadow='md'
-			p={3}
-			height='-webkit-fit-content'
-			width='100%'>
-			<Tabs variant='solid-rounded' colorScheme='teal' align='center' m={2}>
+		<Flex direction='column' bg={cardBackground} shadow='md' p={3} height='-webkit-fit-content' width='100%'>
+			<Tabs variant='solid-rounded' colorScheme='pink' align='center' m={2} isLazy>
 				<TabList>
 					<Tab fontSize='sm'>Assigned Candidates</Tab>
 					<Tab fontSize='sm'>WalkIn Candidates</Tab>
@@ -51,83 +66,101 @@ const Interviews = ({ session }) => {
 				<Stack overflow='scroll' height='-webkit-fit-content' maxHeight='80vh'>
 					<TabPanels>
 						<TabPanel>
-							<Table variant='striped' size='sm' colorScheme='teal'>
-								<Thead>
-									<Tr>
-										<Th>Student Name</Th>
-										<Th>Uni ID</Th>
-										<Th>Department</Th>
-										<Th>Email</Th>
-										<Th></Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{assignedCandidates &&
-										assignedCandidates.map((student_id) => (
-											<StudentRow student_id={student_id} key={student_id} type='assigned' />
-										))}
-								</Tbody>
-							</Table>
+							{assignedCandidates ? (
+								<Table variant='striped' size='sm' colorScheme='teal'>
+									<Thead>
+										<Tr>
+											<Th>Student Name</Th>
+											<Th>Uni ID</Th>
+											<Th>Department</Th>
+											<Th>Email</Th>
+											<Th></Th>
+										</Tr>
+									</Thead>
+									<Tbody>
+										{assignedCandidates &&
+											assignedCandidates.map((student_id) => (
+												<StudentRow student_id={student_id} key={student_id} type='assigned' />
+											))}
+									</Tbody>
+								</Table>
+							) : (
+								<Lottie options={emptyLottie} height={300} width={300} />
+							)}
 						</TabPanel>
 						<TabPanel>
-							<Table variant='striped' size='sm' colorScheme='teal'>
-								<Thead>
-									<Tr>
-										<Th>Student Name</Th>
-										<Th>Uni ID</Th>
-										<Th>Department</Th>
-										<Th>Email</Th>
-										<Th></Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{walkinInterviews &&
-										walkinInterviews.map((interview) => (
-											<StudentRow student_id={interview.student_id} key={interview.student_id} type='walkin' />
-										))}
-								</Tbody>
-							</Table>
+							{walkinInterviews.length ? (
+								<Table variant='striped' size='sm' colorScheme='teal'>
+									<Thead>
+										<Tr>
+											<Th>Student Name</Th>
+											<Th>Uni ID</Th>
+											<Th>Department</Th>
+											<Th>Email</Th>
+											<Th></Th>
+										</Tr>
+									</Thead>
+									<Tbody>
+										{walkinInterviews &&
+											walkinInterviews.map((interview) => (
+												<StudentRow student_id={interview.student_id} key={interview.student_id} type='walkin' />
+											))}
+									</Tbody>
+								</Table>
+							) : (
+								<Lottie options={emptyLottie} height={300} width={300} />
+							)}
 						</TabPanel>
 						<TabPanel>
-							<Table variant='striped' size='sm' width='100%' colorScheme='teal'>
-								<Thead>
-									<Tr>
-										<Th>Student Name</Th>
-										<Th>Uni ID</Th>
-										<Th>Department</Th>
-										<Th>Email</Th>
-										<Th></Th>
-									</Tr>
-								</Thead>
-								<Tbody width='100%'>
-									{inQueueInterviews &&
-										inQueueInterviews.map((interview) => (
-											<StudentRow student_id={interview.student_id} key={interview.student_id} type='inQueue' />
-										))}
-								</Tbody>
-							</Table>
+							{inQueueInterviews.length ? (
+								<Table variant='striped' size='sm' width='100%' colorScheme='teal'>
+									<Thead>
+										<Tr>
+											<Th>Student Name</Th>
+											<Th>Uni ID</Th>
+											<Th>Department</Th>
+											<Th>Email</Th>
+											<Th></Th>
+										</Tr>
+									</Thead>
+									<Tbody width='100%'>
+										{inQueueInterviews &&
+											inQueueInterviews.map((interview) => (
+												<StudentRow student_id={interview.student_id} key={interview.student_id} type='inQueue' />
+											))}
+									</Tbody>
+								</Table>
+							) : (
+								<Lottie options={emptyLottie} height={300} width={300} />
+							)}
 						</TabPanel>
 						<TabPanel>
-							<Table variant='striped' size='sm' width='100%' colorScheme='teal'>
-								<Thead>
-									<Tr>
-										<Th>Student Name</Th>
-										<Th>Uni ID</Th>
-										<Th>Department</Th>
-										<Th>Email</Th>
-										<Th></Th>
-									</Tr>
-								</Thead>
-								<Tbody width='100%'>
-									{completedInterviews &&
-										completedInterviews.map((interview) => (
-											<StudentRow student_id={interview.student_id} key={interview.student_id} type='completed' />
-										))}
-								</Tbody>
-							</Table>
+							{completedInterviews.length ? (
+								<Table variant='striped' size='sm' width='100%' colorScheme='teal'>
+									<Thead>
+										<Tr>
+											<Th>Student Name</Th>
+											<Th>Uni ID</Th>
+											<Th>Department</Th>
+											<Th>Email</Th>
+											<Th></Th>
+										</Tr>
+									</Thead>
+									<Tbody width='100%'>
+										{completedInterviews &&
+											completedInterviews.map((interview) => (
+												<StudentRow student_id={interview.student_id} key={interview.student_id} type='completed' />
+											))}
+									</Tbody>
+								</Table>
+							) : (
+								<Lottie options={emptyLottie} height={300} width={300} />
+							)}
 						</TabPanel>
 						//TODO: Add a Table with all the activities
-						<TabPanel>TODO</TabPanel>
+						<TabPanel>
+							<Lottie options={underConstructionLottie} height={300} width={300} />
+						</TabPanel>
 					</TabPanels>
 				</Stack>
 				<Button rounded='full' colorScheme='pink' width='-webkit-fit-content' onClick={() => Refresh()}>

@@ -15,7 +15,6 @@ const InterviewController = ({ panel_id }) => {
 				background={cardBackground}
 				overflow='auto'
 				shadow='md'
-				rounded='2xl'
 				p={3}>
 				<CurrentInterview />
 			</Flex>
@@ -25,7 +24,6 @@ const InterviewController = ({ panel_id }) => {
 				flexDirection='column'
 				background={cardBackground}
 				overflow='auto'
-				rounded='2xl'
 				shadow='md'
 				mt={3}
 				p={3}>

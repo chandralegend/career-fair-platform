@@ -65,7 +65,7 @@ const dashboard = () => {
 								<CompanyDetails />
 								<CompanySessions sessions_data={sessions} active_session={currentSession} />
 							</Flex>
-							<InterviewProvider session_id={currentSession.id}>
+							<InterviewProvider session_id={currentSession.id} panel_id={panel}>
 								<Flex width='55%'>
 									<Interviews session={currentSession} />
 								</Flex>

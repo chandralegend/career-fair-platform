@@ -26,9 +26,10 @@ const InterviewControls = ({ panel_id }) => {
 			<Heading size='md'>Upcoming Interview</Heading>
 			<CandidateDetails data={student} />
 			<Button
-				colorScheme='teal'
+				colorScheme='green'
 				shadow='md'
-				m={3}
+				width='100%'
+				mt={3}
 				rounded='full'
 				disabled={!inQueueInterviews.length}
 				onClick={() => {
@@ -36,8 +37,9 @@ const InterviewControls = ({ panel_id }) => {
 				}}>
 				Next Interview
 			</Button>
-			<Flex flexDirection='row' justifyContent='space-evenly'>
+			<ButtonGroup mt={3}>
 				<Button
+					flex={1}
 					colorScheme='orange'
 					shadow='md'
 					rounded='full'
@@ -46,10 +48,10 @@ const InterviewControls = ({ panel_id }) => {
 					}}>
 					Walkin
 				</Button>
-				<Button colorScheme='green' shadow='md' rounded='full' onClick={() => EnableCheckin(panel_id)}>
+				<Button colorScheme='green' shadow='md' rounded='full' onClick={() => EnableCheckin(panel_id)} flex={1}>
 					CheckIn
 				</Button>
-			</Flex>
+			</ButtonGroup>
 		</Flex>
 	);
 };

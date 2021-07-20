@@ -8,17 +8,26 @@ const CompanySessions = ({ sessions_data, active_session }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 
 	return (
-		<Flex width='100%' justifyContent='center' mt={3} shadow='md' p={3} background={cardBackground} rounded='2xl'>
+		<Flex width='100%' justifyContent='center' mt={3} shadow='md' p={3} background={cardBackground}>
 			<Flex width='100%' flexDirection='column' alignItems='center'>
 				<Heading size='md'>Sessions</Heading>
-				<Flex flexDirection='column' width='100%' overflow='scroll' maxHeight={300}>
-					{sessions_data &&
-						sessions_data.map((session, idx) => {
-							return (
-								<SessionCard session_index={idx + 1} data={session} key={session.id} acitve_session={active_session} />
-							);
-						})}
-				</Flex>
+				{sessions_data.length ? (
+					<Flex flexDirection='column' width='100%' overflow='scroll' maxHeight={300}>
+						{sessions_data &&
+							sessions_data.map((session, idx) => {
+								return (
+									<SessionCard
+										session_index={idx + 1}
+										data={session}
+										key={session.id}
+										acitve_session={active_session}
+									/>
+								);
+							})}
+					</Flex>
+				) : (
+					<div>No Sessions Available</div>
+				)}
 			</Flex>
 		</Flex>
 	);
@@ -32,16 +41,17 @@ const SessionCard = ({ session_index, data, acitve_session }) => {
 
 	return (
 		<Flex
-			shadow='md'
+			shadow={isActive ? "md" : ""}
 			rounded={5}
 			p={3}
 			flexDirection='column'
 			mt={5}
 			width='100%'
-			borderLeft={isActive ? "5px solid teal" : ""}>
+			borderLeft={isActive ? "5px solid darkcyan" : ""}
+			fontWeight={isActive ? "normal" : "thin"}>
 			<Flex flexDirection='column'>
-				<Text fontSize='larger'>Session {session_index}</Text>
-				<Text fontSize='xs'>{session_schedule}</Text>
+				<Text fontSize={isActive ? "xl" : "large"}>Session {session_index}</Text>
+				<Text fontSize={isActive ? "small" : "xs"}>{session_schedule}</Text>
 			</Flex>
 		</Flex>
 	);

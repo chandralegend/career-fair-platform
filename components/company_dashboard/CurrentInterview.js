@@ -1,4 +1,4 @@
-import { Flex, Button, Heading } from "@chakra-ui/react";
+import { Flex, Button, Heading, ButtonGroup } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import { useInterview } from "../../lib/interviews";
@@ -20,11 +20,12 @@ const CurrentInterview = () => {
 	}, [inQueueInterviews]);
 
 	return (
-		<Flex p={3} flexDirection='column' width='95%'>
+		<Flex p={3} flexDirection='column' width='100%'>
 			<Heading size='md'>Current Interview</Heading>
 			<CandidateDetails data={student} />
-			<Flex alignItems='center' width='100%' justifyContent='space-evenly' mt={3}>
+			<ButtonGroup mt={3}>
 				<Button
+					flex={1}
 					colorScheme='green'
 					shadow='md'
 					rounded='full'
@@ -35,6 +36,7 @@ const CurrentInterview = () => {
 					Join Meeting
 				</Button>
 				<Button
+					flex={1}
 					colorScheme='orange'
 					shadow='md'
 					rounded='full'
@@ -44,7 +46,7 @@ const CurrentInterview = () => {
 					}}>
 					Feedback
 				</Button>
-			</Flex>
+			</ButtonGroup>
 		</Flex>
 	);
 };

@@ -13,6 +13,7 @@ import PanelSelector from "../../components/company_dashboard/PanelSelector";
 import { getAllPanels, getPanelSessions } from "../../lib/api";
 import { useAuth } from "../../lib/auth";
 import InterviewProvider from "../../lib/interviews";
+import Footer from "../../components/Footer";
 
 const dashboard = () => {
 	const { user } = useAuth();
@@ -50,7 +51,12 @@ const dashboard = () => {
 
 	return (
 		<PrivateRoute endsWith='@company.lk'>
-			<Flex height='100vh' flexDirection='column' padding={5}>
+			<Flex
+				height='100vh'
+				flexDirection='column'
+				padding={5}
+				backgroundImage='https://www.pexels.com/photo/1072179/download/?search_query=background&tracking_id=ei3wwg0t4lc'
+				backgroundSize='cover'>
 				<MenuBar />
 				<SlideFade in offsetY='30px'>
 					{currentSession ? (
@@ -70,10 +76,12 @@ const dashboard = () => {
 							</InterviewProvider>
 						</Flex>
 					) : (
-						//TODO: Better No Sessions Available Component @Geshan
 						<Text>No More Sessions Available</Text>
 					)}
 				</SlideFade>
+				<Flex position='absolute' bottom={5} width='100%'>
+					<Footer />
+				</Flex>
 			</Flex>
 		</PrivateRoute>
 	);

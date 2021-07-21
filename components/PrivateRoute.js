@@ -7,10 +7,10 @@ const PrivateRoute = ({ children, endsWith }) => {
 	if (user && user.user.email.endsWith(endsWith)) {
 		return children;
 	} else if (user && !user.user.email.endsWith(endsWith)) {
-		//TODO: Create a Access Denied Page with Button to Index
+		//TODO: Create a Access Denied Page with Button to Index @Geshan
 		return <a>Access Denied</a>;
 	} else {
-		//TODO: Create a Loading Page
+		//TODO: Create a Loading Page @Geshan
 		return <a>loading</a>;
 	}
 };

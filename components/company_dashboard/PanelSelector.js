@@ -1,7 +1,7 @@
 import { Button, Flex, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import PanelSelectorModal from "./PanelSelectorModal";
 
-//TODO: Handle Already Online Panels Avoid users login to different Panel when someoone is already in it @Janith
+//TODO: Handle Already Online Panels Avoid users login to different Panel when someoone is already in it @Chandra
 
 const PanelSelector = ({ selected, data, setPanel }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");

@@ -1,23 +1,19 @@
-import {
-	Flex,
-	useColorMode,
-	Box,
-	IconButton,
-	Heading,
-	Button,
-} from "@chakra-ui/react";
+import { Flex, useColorMode, Box, IconButton, Heading, Button, useColorModeValue } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../lib/auth";
 
 const MenuBar = () => {
+	const buttonColor = useColorModeValue("gray.100", "gray.900");
 	const { colorMode, toggleColorMode } = useColorMode();
 	const { signout } = useAuth();
 	return (
 		<Flex width='100%' alignItems='center' justifyContent='space-between'>
-			<Heading size='md'>EE Career Fair</Heading>
+			<Heading size='md' textColor='white'>
+				EE Spire
+			</Heading>
 			<Flex>
 				<Box>
-					<Button onClick={signout} rounded='full'>
+					<Button onClick={signout} rounded='full' backgroundColor={buttonColor}>
 						Log Out
 					</Button>
 				</Box>
@@ -25,6 +21,7 @@ const MenuBar = () => {
 					<IconButton
 						rounded='full'
 						onClick={toggleColorMode}
+						backgroundColor={buttonColor}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
 				</Box>

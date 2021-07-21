@@ -13,9 +13,11 @@ import {
 	SlideFade,
 	FormControl,
 	FormErrorMessage,
+	Image,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../lib/auth";
+import Footer from "../../components/Footer";
 
 const login = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -41,28 +43,36 @@ const login = () => {
 	}
 
 	return (
-		<Flex height='100vh' alignItems='center' justifyContent='center' direction='column'>
+		<Flex
+			height='100vh'
+			alignItems='center'
+			justifyContent='center'
+			direction='column'
+			// backgroundImage='https://www.pexels.com/photo/1072179/download/?search_query=background&tracking_id=ei3wwg0t4lc'
+			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
 					<IconButton
+						backgroundColor={formBackground}
 						rounded='full'
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
 				</Box>
 				<Center>
-					<Heading mb={10} size='2xl'>
-						EE Career Fair 2021
+					{/* <Image src='https://i.ibb.co/TTjNPFz/Optimize-Ai-transparent-01.png' /> */}
+					<Heading mb={10} size='2xl' color='white'>
+						EE Spire
 					</Heading>
 				</Center>
 
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Center>
 						<Flex
+							shadow='md'
 							direction='column'
 							background={formBackground}
-							p={12}
-							rounded='2xl'
+							p={16}
 							alignItems='center'
 							maxWidth='-webkit-max-content'>
 							<FormControl isInvalid={errors.username} mb={3}>
@@ -70,7 +80,7 @@ const login = () => {
 									rounded='full'
 									id='username'
 									placeholder='Username'
-									variant='filled'
+									variant='outline'
 									{...register("username", {
 										required: "Username is required",
 									})}
@@ -84,7 +94,7 @@ const login = () => {
 									rounded='full'
 									id='password'
 									placeholder='Password'
-									variant='filled'
+									variant='outline'
 									type='password'
 									{...register("password", {
 										required: "Password is Required",
@@ -101,6 +111,9 @@ const login = () => {
 					</Center>
 				</form>
 			</SlideFade>
+			<Flex position='absolute' bottom={5} left={5} width='100%'>
+				<Footer />
+			</Flex>
 		</Flex>
 	);
 };

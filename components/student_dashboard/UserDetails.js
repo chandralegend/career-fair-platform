@@ -33,9 +33,7 @@ const UserDetails = () => {
 		if (file && file.type === "application/pdf") {
 			setUploadingCV(true);
 			try {
-				const fileName =
-					new Date().getTime().toString() +
-					(Math.ceil(Math.random() * 1000000) + 100000).toString();
+				const fileName = new Date().getTime().toString() + (Math.ceil(Math.random() * 1000000) + 100000).toString();
 
 				const locationRef = storage.ref("Student_CV").child(fileName);
 				await locationRef.put(file, { contentType: file.type });
@@ -95,7 +93,6 @@ const UserDetails = () => {
 				p={6}
 				height='-webkit-fit-content'
 				width='100%'
-				rounded='2xl'
 				background={cardBackground}
 				flexDirection='column'
 				alignItems='center'
@@ -120,19 +117,10 @@ const UserDetails = () => {
 				</Flex>
 				<Center flexDirection='column'>
 					<ButtonGroup mt={4} mb={2}>
-						<Button
-							rounded='full'
-							boxShadow='2xl'
-							variant='solid'
-							isLoading={uploadingCV}
-							onClick={handleClick}>
+						<Button rounded='full' boxShadow='2xl' variant='solid' isLoading={uploadingCV} onClick={handleClick}>
 							Upload CV
 						</Button>
-						<Input
-							hidden
-							type='file'
-							ref={hiddenFileInput}
-							onChange={handleCvUpload}></Input>
+						<Input hidden type='file' ref={hiddenFileInput} onChange={handleCvUpload}></Input>
 						<Button
 							rounded='full'
 							boxShadow='2xl'

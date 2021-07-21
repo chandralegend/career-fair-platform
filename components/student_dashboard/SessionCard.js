@@ -20,14 +20,7 @@ async function formatData(session_data) {
 
 const SessionCard = ({ session }) => {
 	const [
-		{
-			company_logo,
-			company_name,
-			assigned_students,
-			isCheckinEnabled,
-			interview_schedule,
-			panel_no,
-		},
+		{ company_logo, company_name, assigned_students, isCheckinEnabled, interview_schedule, panel_no },
 		setSession,
 	] = useState({});
 	const [loading, setLoading] = useState(true);
@@ -56,49 +49,28 @@ const SessionCard = ({ session }) => {
 	}, []);
 
 	return (
-		<Flex
-			boxShadow='base'
-			rounded='xl'
-			p={3}
-			flexDirection='column'
-			mt={5}
-			width='100%'>
+		<Flex boxShadow='base' p={3} flexDirection='column' mt={5} width='100%'>
 			<Skeleton isLoaded={!loading} rounded='xl' fadeDuration={3}>
 				<Flex justifyContent='space-between'>
 					<Flex alignItems='center'>
-						<Avatar
-							size='md'
-							src={company_logo}
-							mr={3}
-							backgroundColor='white'
-							boxShadow='lg'
-						/>
+						<Avatar size='md' src={company_logo} mr={3} backgroundColor='white' boxShadow='lg' />
 						<Flex flexDirection='column'>
 							<Text fontSize='larger'>{company_name}</Text>
 							<Text fontSize='smaller'>Panel {panel_no}</Text>
 						</Flex>
 					</Flex>
 					<Flex alignItems='center'>
-						<Text fontSize='large'>
-							{assigned_students && assigned_students.length} people are
-							assigned
-						</Text>
+						<Text fontSize='large'>{assigned_students && assigned_students.length} people are assigned</Text>
 					</Flex>
 					<Flex alignItems='center'>
-						<Button
-							colorScheme='blue'
-							disabled={!isCheckinEnabled}
-							rounded='full'>
+						<Button colorScheme='blue' disabled={!isCheckinEnabled} rounded='full'>
 							Check-In
 						</Button>
 					</Flex>
 				</Flex>
 				<Flex justifyContent='flex-end'>
 					<Text fontSize='xs'>
-						{interview_schedule &&
-							moment
-								.unix(interview_schedule.seconds)
-								.format("dddd, MMMM Do YYYY, h:mm:ss a")}
+						{interview_schedule && moment.unix(interview_schedule.seconds).format("dddd, MMMM Do YYYY, h:mm:ss a")}
 					</Text>
 				</Flex>
 			</Skeleton>

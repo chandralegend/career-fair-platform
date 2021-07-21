@@ -3,7 +3,7 @@ import { Flex, useColorModeValue } from "@chakra-ui/react";
 import CurrentInterview from "./CurrentInterview";
 import InterviewControls from "./InterviewControls";
 
-const InterviewController = ({ panel_id }) => {
+const InterviewController = ({ session, panels }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 
 	return (
@@ -27,7 +27,7 @@ const InterviewController = ({ panel_id }) => {
 				shadow='md'
 				mt={3}
 				p={3}>
-				<InterviewControls panel_id={panel_id} />
+				<InterviewControls session={session} panels={panels} />
 			</Flex>
 		</Flex>
 	);

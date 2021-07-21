@@ -60,10 +60,10 @@ const login = () => {
 					/>
 				</Box>
 				<Center>
-					{/* <Image src='https://i.ibb.co/TTjNPFz/Optimize-Ai-transparent-01.png' /> */}
-					<Heading mb={10} size='2xl' color='white'>
+					<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={150} />
+					{/* <Heading mb={10} size='2xl' color='white'>
 						EE Spire
-					</Heading>
+					</Heading> */}
 				</Center>
 
 				<form onSubmit={handleSubmit(onSubmit)}>

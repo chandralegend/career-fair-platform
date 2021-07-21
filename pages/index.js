@@ -1,5 +1,15 @@
 import { useRouter } from "next/router";
-import { Flex, Box, IconButton, useColorMode, Heading, Button, SlideFade, useColorModeValue } from "@chakra-ui/react";
+import {
+	Flex,
+	Box,
+	IconButton,
+	useColorMode,
+	Heading,
+	Button,
+	SlideFade,
+	useColorModeValue,
+	Image,
+} from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Lottie from "react-lottie";
 
@@ -42,7 +52,8 @@ const index = () => {
 			<SlideFade in offsetY='30px'>
 				<Flex alignItems='center' justifyContent='center' direction='column'>
 					<Flex>
-						<Lottie options={defaultOptions} height={300} width={300} />
+						<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={150} />
+						{/* <Lottie options={defaultOptions} height={300} width={300} /> */}
 					</Flex>
 					<Heading size='md' mb={5} color='white'>
 						Login As

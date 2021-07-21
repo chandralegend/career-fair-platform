@@ -33,7 +33,7 @@ const dashboard = () => {
 
 	useEffect(() => {
 		if (user) {
-			// console.count("Getting Panels and Sessions");
+			console.count("Getting Panels and Sessions");
 			getAllPanels(user.uuid)
 				.then((res) => {
 					setPanels(res.data);
@@ -55,7 +55,7 @@ const dashboard = () => {
 				height='100vh'
 				flexDirection='column'
 				padding={5}
-				backgroundImage='https://www.pexels.com/photo/1072179/download/?search_query=background&tracking_id=ei3wwg0t4lc'
+				backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 				backgroundSize='cover'>
 				<MenuBar />
 				<SlideFade in offsetY='30px'>
@@ -63,7 +63,7 @@ const dashboard = () => {
 						<Flex flexDirection='row' mt={3}>
 							<Flex flexDirection='column' width='20%' mr={3}>
 								<PanelSelector data={panels} selected={panel} setPanel={setPanel} />
-								<CompanyDetails />
+								<CompanyDetails panel_id={panel} />
 								<CompanySessions sessions_data={sessions} active_session={currentSession} />
 							</Flex>
 							<InterviewProvider session_id={currentSession.id} panel_id={panel}>
@@ -79,7 +79,7 @@ const dashboard = () => {
 						<Text>No More Sessions Available</Text>
 					)}
 				</SlideFade>
-				<Flex position='absolute' bottom={5} width='100%'>
+				<Flex position='absolute' bottom={5}>
 					<Footer />
 				</Flex>
 			</Flex>

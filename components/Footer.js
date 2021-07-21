@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<Flex width='100%'>
+		<Flex>
 			<Text color='whiteAlpha.700' fontSize='xs'>
 				Made with ❤️ by EE Society
 			</Text>

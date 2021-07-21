@@ -40,7 +40,13 @@ const login = () => {
 	}
 
 	return (
-		<Flex height='100vh' alignItems='center' justifyContent='center' direction='column' backgroundSize='cover'>
+		<Flex
+			height='100vh'
+			alignItems='center'
+			justifyContent='center'
+			direction='column'
+			backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
+			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
 					<IconButton

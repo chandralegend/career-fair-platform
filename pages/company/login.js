@@ -48,7 +48,7 @@ const login = () => {
 			alignItems='center'
 			justifyContent='center'
 			direction='column'
-			// backgroundImage='https://www.pexels.com/photo/1072179/download/?search_query=background&tracking_id=ei3wwg0t4lc'
+			backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
@@ -61,9 +61,6 @@ const login = () => {
 				</Box>
 				<Center>
 					<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={150} />
-					{/* <Heading mb={10} size='2xl' color='white'>
-						EE Spire
-					</Heading> */}
 				</Center>
 
 				<form onSubmit={handleSubmit(onSubmit)}>
@@ -111,7 +108,7 @@ const login = () => {
 					</Center>
 				</form>
 			</SlideFade>
-			<Flex position='absolute' bottom={5} left={5} width='100%'>
+			<Flex position='absolute' bottom={5} left={5}>
 				<Footer />
 			</Flex>
 		</Flex>

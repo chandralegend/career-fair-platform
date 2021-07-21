@@ -16,7 +16,6 @@ const InterviewControls = ({ session, panels }) => {
 	useEffect(() => {
 		setWalkin(panel_id && panels.filter((panel) => panel.id === panel_id)[0].isWalkinEnabled);
 		setCheckin(session && session.isCheckinEnabled);
-		console.log(walkin, checkin);
 		if (inQueueInterviews.length >= 2) {
 			getStudent(inQueueInterviews[1].student_id).then((res) => {
 				setStudent(res.data);

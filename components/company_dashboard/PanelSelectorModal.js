@@ -1,4 +1,5 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, Button, Wrap, Flex, ButtonGroup } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, Button, ButtonGroup } from "@chakra-ui/react";
+import { updatePanelAvailability } from "../../lib/api";
 
 const PanelSelectorModal = ({ isOpen, onClose, setPanel, data }) => {
 	return (
@@ -11,12 +12,14 @@ const PanelSelectorModal = ({ isOpen, onClose, setPanel, data }) => {
 						data.map((panel) => {
 							return (
 								<Button
+									key={panel.id}
 									boxSize={100}
 									rounded='full'
 									colorScheme={panel.availability ? "teal" : "red"}
 									disabled={!panel.availability}
 									onClick={() => {
 										setPanel(panel.id);
+										updatePanelAvailability(panel.id, { availability: false });
 										onClose();
 									}}>
 									Panel {panel.panel_no}

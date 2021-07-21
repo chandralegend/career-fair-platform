@@ -1,4 +1,4 @@
-import { Flex, useColorMode, Box, IconButton, Heading, Button, useColorModeValue } from "@chakra-ui/react";
+import { Flex, useColorMode, Box, IconButton, Heading, Button, useColorModeValue, Image } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../lib/auth";
 
@@ -8,9 +8,10 @@ const MenuBar = () => {
 	const { signout } = useAuth();
 	return (
 		<Flex width='100%' alignItems='center' justifyContent='space-between'>
-			<Heading size='md' textColor='white'>
+			{/* <Heading size='md' textColor='white'>
 				EE Spire
-			</Heading>
+			</Heading> */}
+			<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={10} />
 			<Flex>
 				<Box>
 					<Button onClick={signout} rounded='full' backgroundColor={buttonColor}>

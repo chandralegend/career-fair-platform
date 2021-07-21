@@ -21,11 +21,6 @@ const dashboard = () => {
 	const [sessions, setSessions] = useState([]);
 	const [currentSession, setCurrentSession] = useState({});
 
-	function handleSelect(e) {
-		setPanel(e.target.value);
-		//TODO: Handle Panel @Janith
-	}
-
 	function getCurrentSession(sessions) {
 		sessions.forEach((session) => {
 			const time_now = new Date().getTime() / 1000;
@@ -61,7 +56,7 @@ const dashboard = () => {
 					{currentSession ? (
 						<Flex flexDirection='row' mt={3}>
 							<Flex flexDirection='column' width='20%' mr={3}>
-								<PanelSelector data={panels} selected={panel} onSelect={handleSelect} setPanel={setPanel} />
+								<PanelSelector data={panels} selected={panel} setPanel={setPanel} />
 								<CompanyDetails />
 								<CompanySessions sessions_data={sessions} active_session={currentSession} />
 							</Flex>

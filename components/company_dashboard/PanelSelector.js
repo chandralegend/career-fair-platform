@@ -3,7 +3,7 @@ import PanelSelectorModal from "./PanelSelectorModal";
 
 //TODO: Handle Already Online Panels Avoid users login to different Panel when someoone is already in it @Janith
 
-const PanelSelector = ({ selected, onSelect, data, setPanel }) => {
+const PanelSelector = ({ selected, data, setPanel }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -14,7 +14,7 @@ const PanelSelector = ({ selected, onSelect, data, setPanel }) => {
 
 	return (
 		<Flex p={3} background={cardBackground} width='100%' shadow='md'>
-			<PanelSelectorModal isOpen={isOpen} onClose={onClose} selected={selected} onSelect={onSelect} data={data} />
+			<PanelSelectorModal isOpen={isOpen} onClose={onClose} setPanel={setPanel} data={data} />
 			<Button
 				rounded='full'
 				colorScheme={selected ? "red" : "teal"}

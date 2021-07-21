@@ -1,21 +1,29 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, Select } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, Button, Wrap, Flex, ButtonGroup } from "@chakra-ui/react";
 
-const PanelSelectorModal = ({ isOpen, onClose, selected, onSelect, data }) => {
+const PanelSelectorModal = ({ isOpen, onClose, setPanel, data }) => {
 	return (
-		<Modal isOpen={isOpen} onClose={onClose}>
+		<Modal isOpen={isOpen} onClose={onClose} size='2xl' isCentered>
 			<ModalOverlay />
-			<ModalContent>
-				<ModalHeader>Panel Selector</ModalHeader>
-				<Select placeholder='Select Panel' shadow='base' value={selected} onChange={onSelect}>
+			<ModalContent alignItems='center' width='-webkit-fit-content' p={6}>
+				<ModalHeader>Select a Panel</ModalHeader>
+				<ButtonGroup>
 					{data &&
 						data.map((panel) => {
 							return (
-								<option value={panel.id} disabled={!panel.availability} key={panel.id}>
+								<Button
+									boxSize={100}
+									rounded='full'
+									colorScheme={panel.availability ? "teal" : "red"}
+									disabled={!panel.availability}
+									onClick={() => {
+										setPanel(panel.id);
+										onClose();
+									}}>
 									Panel {panel.panel_no}
-								</option>
+								</Button>
 							);
 						})}
-				</Select>
+				</ButtonGroup>
 			</ModalContent>
 		</Modal>
 	);

@@ -5,6 +5,7 @@ import {
 	Center,
 	Flex,
 	Heading,
+	Image,
 	IconButton,
 	Input,
 	useColorMode,
@@ -31,9 +32,8 @@ const login = () => {
 		signin(values.username + "@uom.lk", values.password, "/student/dashboard")
 			.then()
 			.catch((err) => {
-				setError("password", {
+				setError("submitError", {
 					message: "Invalid Credentials",
-					shouldFocus: false,
 				});
 				setLoading(false);
 			});
@@ -44,18 +44,22 @@ const login = () => {
 			height='100vh'
 			alignItems='center'
 			justifyContent='center'
-			direction='column'>
+			direction='column'
+			backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
+			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
 					<IconButton
+						rounded='full'
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
 				</Box>
 				<Center>
-					<Heading mb={10} size='2xl'>
+					<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={150} />
+					{/* <Heading mb={10} size='2xl'>
 						EE Career Fair 2021
-					</Heading>
+					</Heading> */}
 				</Center>
 
 				<form onSubmit={handleSubmit(onSubmit)}>
@@ -63,15 +67,15 @@ const login = () => {
 						<Flex
 							direction='column'
 							background={formBackground}
-							p={12}
-							rounded={6}
+							p={16}
 							alignItems='center'
 							maxWidth='-webkit-max-content'>
 							<FormControl isInvalid={errors.username} mb={3}>
 								<Input
 									id='username'
+									rounded='full'
 									placeholder='University ID'
-									variant='filled'
+									variant='outline'
 									{...register("username", {
 										required: "University ID is required",
 										minLength: { value: 7, message: "Invalid University ID" },
@@ -85,8 +89,9 @@ const login = () => {
 							<FormControl isInvalid={errors.password} mb={6}>
 								<Input
 									id='password'
+									rounded='full'
 									placeholder='Password'
-									variant='filled'
+									variant='outline'
 									type='password'
 									{...register("password", {
 										required: "Password is Required",
@@ -96,14 +101,14 @@ const login = () => {
 									{errors.password && errors.password.message}
 								</FormErrorMessage>
 							</FormControl>
-							<Button
-								colorScheme='teal'
-								type='submit'
-								width='100%'
-								mb={3}
-								isLoading={loading}>
-								Log in
-							</Button>
+							<FormControl isInvalid={errors.submitError}>
+								<Button rounded='full' colorScheme='teal' type='submit' width='100%' mb={3} isLoading={loading}>
+									Log in
+								</Button>
+								<FormErrorMessage flex justifyContent='center'>
+									{errors.submitError && errors.submitError.message}
+								</FormErrorMessage>
+							</FormControl>
 						</Flex>
 					</Center>
 				</form>

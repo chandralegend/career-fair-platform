@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import Router from "next/router";
 import {
 	Box,
 	Button,
@@ -12,9 +13,11 @@ import {
 	SlideFade,
 	FormControl,
 	FormErrorMessage,
+	Image,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../lib/auth";
+import Footer from "../../components/Footer";
 
 const login = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -25,21 +28,17 @@ const login = () => {
 		formState: { errors },
 		setError,
 	} = useForm();
-	const { loading, signin, setLoading } = useAuth();
+	const { loading, signin } = useAuth();
 
 	function onSubmit(values) {
-		signin(
-			values.username + "@company.lk",
-			values.password,
-			"/company/dashboard"
-		)
+		signin(values.username + "@company.lk", values.password, "/company/dashboard")
 			.then()
 			.catch((err) => {
 				setError("password", {
 					message: "Invalid Credentials",
 					shouldFocus: false,
 				});
-				setLoading(false);
+				console.log(err);
 			});
 	}
 
@@ -48,34 +47,37 @@ const login = () => {
 			height='100vh'
 			alignItems='center'
 			justifyContent='center'
-			direction='column'>
+			direction='column'
+			backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
+			backgroundSize='cover'>
 			<SlideFade in offsetY='30px'>
 				<Box position='absolute' right={5} top={5}>
 					<IconButton
+						backgroundColor={formBackground}
+						rounded='full'
 						onClick={toggleColorMode}
 						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
 					/>
 				</Box>
 				<Center>
-					<Heading mb={10} size='2xl'>
-						EE Career Fair 2021
-					</Heading>
+					<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={150} />
 				</Center>
 
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Center>
 						<Flex
+							shadow='md'
 							direction='column'
 							background={formBackground}
-							p={12}
-							rounded={6}
+							p={16}
 							alignItems='center'
 							maxWidth='-webkit-max-content'>
 							<FormControl isInvalid={errors.username} mb={3}>
 								<Input
+									rounded='full'
 									id='username'
 									placeholder='Username'
-									variant='filled'
+									variant='outline'
 									{...register("username", {
 										required: "Username is required",
 									})}
@@ -86,9 +88,10 @@ const login = () => {
 							</FormControl>
 							<FormControl isInvalid={errors.password} mb={6}>
 								<Input
+									rounded='full'
 									id='password'
 									placeholder='Password'
-									variant='filled'
+									variant='outline'
 									type='password'
 									{...register("password", {
 										required: "Password is Required",
@@ -98,18 +101,16 @@ const login = () => {
 									{errors.password && errors.password.message}
 								</FormErrorMessage>
 							</FormControl>
-							<Button
-								colorScheme='teal'
-								type='submit'
-								width='100%'
-								mb={3}
-								isLoading={loading}>
+							<Button rounded='full' colorScheme='teal' type='submit' width='100%' mb={3} isLoading={loading}>
 								Log in
 							</Button>
 						</Flex>
 					</Center>
 				</form>
 			</SlideFade>
+			<Flex position='absolute' bottom={5} left={5}>
+				<Footer />
+			</Flex>
 		</Flex>
 	);
 };

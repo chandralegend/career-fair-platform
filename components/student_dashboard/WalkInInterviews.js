@@ -6,25 +6,21 @@ import { getCompany } from "../../lib/api";
 
 const WalkInInterviews = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
-	const [interviews, setInterviews] = useState();
+	const [interviews, setInterviews] = useState([]);
 
 	function FETCH_WALKIN_INTERVIEWS() {
 		const unsubscriber = db
 			.collection("panels")
-			.where("isWalkinEnabled" == true)
+			.where("isWalkinEnabled", "==", true)
 			.onSnapshot((snapshot) => {
 				const walkin_enabled_panels = [];
 				snapshot.forEach((doc) => {
 					//TODO: this can be optimized further by only reading updated docs.
-					console.count("FETCHING PANEL DATA & COMPANY DATA");
-					doc.data().then(async (panel_data) => {
-						const company = await getCompany(panel_data.company_id);
-						walkin_enabled_panels.push({
-							id: doc.id,
-							company_name: company.data.name,
-							company_logo: company.data.photoUrl,
-							...panel_data,
-						});
+					console.count("FETCHING PANEL DATA");
+					const panel_data = doc.data();
+					walkin_enabled_panels.push({
+						id: doc.id,
+						...panel_data,
 					});
 				});
 				setInterviews(walkin_enabled_panels);
@@ -50,14 +46,14 @@ const WalkInInterviews = () => {
 				alignItems='center'
 				shadow='md'>
 				<Heading size='md'>Walk-In Interviews</Heading>
-				{interviews.length ? (
+				{interviews.length >= 1 ? (
 					<Flex flexDirection='column' width='100%'>
 						{interviews.map((interview) => {
 							return <WalkInInterviewCard data={interview} key={interview.id} />;
 						})}
 					</Flex>
 				) : (
-					<Text>When companies open Walk-In interviews, they will appear here. </Text>
+					<Text mt={5}>When companies open Walk-In interviews, they will appear here. </Text>
 				)}
 			</Flex>
 		</Flex>
@@ -66,19 +62,30 @@ const WalkInInterviews = () => {
 
 const WalkInInterviewCard = ({ data }) => {
 	const { user } = useAuth();
-	const already_assigned = user.assigned_panels.include(data.id);
-	const { company_name, company_logo, panel_no } = data;
+	const { panel_no, company_id } = data;
+	const [company, setCompany] = useState({});
+	// const already_assigned = user.assigned_panels.include(data.id);
+	const already_assigned = false;
+
+	useEffect(() => {
+		console.count("FETCHING COMPANY DATA");
+		getCompany(company_id).then((company) => {
+			setCompany(company.data);
+		});
+	}, []);
+
 	return (
 		<Flex shadow='md' rounded='md' p={3} flexDirection='column' mt={5}>
 			<Flex mb={3}>
-				<Avatar size='md' src={company_logo} mr={3} backgroundColor='white' />
+				<Avatar size='md' src={company.photoUrl} mr={3} backgroundColor='white' boxShadow='lg' />
 				<Flex flexDirection='column'>
-					<Text>{company_name}</Text>
+					<Text>{company.name}</Text>
 					<Text fontSize='small'>Panel {panel_no}</Text>
 				</Flex>
 			</Flex>
 			<Button
 				colorScheme='teal'
+				boxShadow='md'
 				rounded='full'
 				disabled={already_assigned || user.checkedin}
 				onClick={() => {

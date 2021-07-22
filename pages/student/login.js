@@ -17,6 +17,8 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../lib/auth";
 
+import Footer from "../../components/Footer";
+
 const login = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const formBackground = useColorModeValue("gray.100", "gray.900");
@@ -57,9 +59,6 @@ const login = () => {
 				</Box>
 				<Center>
 					<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={150} />
-					{/* <Heading mb={10} size='2xl'>
-						EE Career Fair 2021
-					</Heading> */}
 				</Center>
 
 				<form onSubmit={handleSubmit(onSubmit)}>
@@ -113,6 +112,9 @@ const login = () => {
 					</Center>
 				</form>
 			</SlideFade>
+			<Flex position='absolute' bottom={3} right={3}>
+				<Footer />
+			</Flex>
 		</Flex>
 	);
 };

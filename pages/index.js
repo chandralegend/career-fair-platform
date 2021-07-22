@@ -71,7 +71,7 @@ const index = () => {
 					</Flex>
 				</Flex>
 			</SlideFade>
-			<Flex position='absolute' bottom={5} left={5}>
+			<Flex position='absolute' bottom={3} right={3}>
 				<Footer />
 			</Flex>
 		</Flex>

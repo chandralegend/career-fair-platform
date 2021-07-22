@@ -1,6 +1,9 @@
 import { WarningIcon } from "@chakra-ui/icons";
 import { Flex, Heading, Button, Text } from "@chakra-ui/react";
 
+//TODO: Retrieve data @Geshan
+//TODO: handle state change @Jehan @Geshan
+
 const InterviewUpdates = () => {
 	const data = {
 		interview_id: 3,

@@ -175,7 +175,7 @@ const StudentRow = ({ student_id, type }) => {
 	const [student, setStudent] = useState();
 
 	useEffect(() => {
-		// console.count("Getting Student Data");
+		console.count("Interviews Getting Student Data");
 		getStudent(student_id).then((res) => setStudent(res.data));
 	}, []);
 

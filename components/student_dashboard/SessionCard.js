@@ -16,7 +16,7 @@ async function formatData(session_data) {
 	};
 }
 
-//TODO: Add Checkin Fuctionality
+//TODO: Add Checkin Fuctionality @Janith
 
 const SessionCard = ({ session }) => {
 	const [
@@ -49,20 +49,22 @@ const SessionCard = ({ session }) => {
 	}, []);
 
 	return (
-		<Flex boxShadow='base' p={3} flexDirection='column' mt={5} width='100%'>
+		<Flex boxShadow='base' p={3} flexDirection='column' mt={5} width='100%' rounded='md'>
 			<Skeleton isLoaded={!loading} rounded='xl' fadeDuration={3}>
-				<Flex justifyContent='space-between'>
-					<Flex alignItems='center'>
+				<Flex alignItems='center'>
+					<Flex width='30%'>
 						<Avatar size='md' src={company_logo} mr={3} backgroundColor='white' boxShadow='lg' />
 						<Flex flexDirection='column'>
-							<Text fontSize='larger'>{company_name}</Text>
+							<Text noOfLines={1} fontSize='larger'>
+								{company_name}
+							</Text>
 							<Text fontSize='smaller'>Panel {panel_no}</Text>
 						</Flex>
 					</Flex>
-					<Flex alignItems='center'>
+					<Flex width='55%'>
 						<Text fontSize='large'>{assigned_students && assigned_students.length} people are assigned</Text>
 					</Flex>
-					<Flex alignItems='center'>
+					<Flex width='15%'>
 						<Button colorScheme='blue' disabled={!isCheckinEnabled} rounded='full'>
 							Check-In
 						</Button>

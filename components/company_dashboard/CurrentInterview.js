@@ -11,6 +11,7 @@ const CurrentInterview = () => {
 
 	useEffect(() => {
 		if (inQueueInterviews.length) {
+			console.count("current Interview get Student");
 			getStudent(inQueueInterviews[0].student_id).then((res) => {
 				setStudent(res.data);
 			});

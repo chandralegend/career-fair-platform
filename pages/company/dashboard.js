@@ -33,18 +33,21 @@ const dashboard = () => {
 
 	useEffect(() => {
 		if (user) {
-			console.count("Getting Panels and Sessions");
+			console.count("Getting Panels Called");
 			getAllPanels(user.uuid)
 				.then((res) => {
 					setPanels(res.data);
 				})
 				.catch((error) => console.log(error));
 			if (panel) {
+				console.count("Getting Sessions Called");
 				getPanelSessions(panel).then((res) => {
 					const sessions = res.data;
 					setSessions(sessions);
 					getCurrentSession(sessions);
 				});
+			} else {
+				setSessions([]);
 			}
 		}
 	}, [panel, user]);
@@ -79,7 +82,7 @@ const dashboard = () => {
 						<Text>No More Sessions Available</Text>
 					)}
 				</SlideFade>
-				<Flex position='absolute' bottom={5}>
+				<Flex position='absolute' bottom={3} right={3}>
 					<Footer />
 				</Flex>
 			</Flex>

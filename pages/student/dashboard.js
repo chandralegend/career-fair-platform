@@ -10,7 +10,12 @@ import Footer from "../../components/Footer";
 const dashboard = () => {
 	return (
 		<PrivateRoute endsWith='uom.lk'>
-			<Flex height='100vh' flexDirection='column' padding={5} backgroundSize='cover'>
+			<Flex
+				height='100vh'
+				flexDirection='column'
+				padding={5}
+				backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
+				backgroundSize='cover'>
 				<MenuBar />
 				<SlideFade in offsetY='30px'>
 					<Flex flexDirection='row' mt={3}>
@@ -19,7 +24,7 @@ const dashboard = () => {
 						<WalkInInterviews />
 					</Flex>
 				</SlideFade>
-				<Flex position='absolute' bottom={5} width='100%'>
+				<Flex position='absolute' bottom={3} right={3}>
 					<Footer />
 				</Flex>
 			</Flex>

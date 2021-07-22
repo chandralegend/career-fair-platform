@@ -27,9 +27,7 @@ const WalkInInterviews = () => {
 				flexDirection='column'
 				alignItems='center'
 				shadow='md'>
-				<Heading size='md' mb={2}>
-					Walk-In Interviews
-				</Heading>
+				<Heading size='md'>Walk-In Interviews</Heading>
 				{interviews.length < 1 ? <Text>When companies open Walk-In interviews, they will appear here. </Text> : null}
 				<Flex flexDirection='column' width='100%'>
 					{interviews &&
@@ -45,7 +43,7 @@ const WalkInInterviews = () => {
 const WalkInInterviewCard = ({ data }) => {
 	const { company_name, company_logo, n_people } = data;
 	return (
-		<Flex shadow='md' rounded='xl' p={3} flexDirection='column' mb={5}>
+		<Flex shadow='md' rounded='md' p={3} flexDirection='column' mt={5}>
 			<Flex mb={3}>
 				<Avatar size='md' src={company_logo} mr={3} backgroundColor='white' />
 				<Flex flexDirection='column'>

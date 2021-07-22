@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../lib/auth";
 import { getPanel } from "../../lib/api";
 
-//TODO: Add details about the Representative Assigned to the Panel (Name, Contacts and Also Change Password Button) @Janith
-
 const CompanyDetails = ({ panel_id }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	const { user } = useAuth();

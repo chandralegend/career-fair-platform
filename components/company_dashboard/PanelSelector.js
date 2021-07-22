@@ -7,6 +7,7 @@ const PanelSelector = ({ selected, data, setPanel }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const LeavePanel = () => {
+		console.count("Leave Panel");
 		updatePanelAvailability(selected, { availability: true });
 		setPanel();
 	};

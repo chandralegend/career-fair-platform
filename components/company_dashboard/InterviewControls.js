@@ -5,8 +5,6 @@ import { useInterview } from "../../lib/interviews";
 import CandidateDetails from "./CandidateDetails";
 import { getStudent } from "../../lib/api";
 
-//TODO: Comeup with a better solution to Enable Checkin and Walkin Actions @Janith
-
 const InterviewControls = ({ session, panels }) => {
 	const { inQueueInterviews, NextInterview, UpdateCheckin, UpdateWalkin, panel_id, session_id } = useInterview();
 	const [student, setStudent] = useState();
@@ -17,6 +15,7 @@ const InterviewControls = ({ session, panels }) => {
 		setWalkin(panel_id && panels.filter((panel) => panel.id === panel_id)[0].isWalkinEnabled);
 		setCheckin(session && session.isCheckinEnabled);
 		if (inQueueInterviews.length >= 2) {
+			console.count("Interview Control get Student");
 			getStudent(inQueueInterviews[1].student_id).then((res) => {
 				setStudent(res.data);
 			});

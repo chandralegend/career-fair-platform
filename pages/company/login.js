@@ -5,7 +5,6 @@ import {
 	Button,
 	Center,
 	Flex,
-	Heading,
 	IconButton,
 	Input,
 	useColorMode,
@@ -108,7 +107,7 @@ const login = () => {
 					</Center>
 				</form>
 			</SlideFade>
-			<Flex position='absolute' bottom={5} left={5}>
+			<Flex position='absolute' bottom={3} right={3}>
 				<Footer />
 			</Flex>
 		</Flex>

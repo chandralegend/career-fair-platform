@@ -56,18 +56,27 @@ const InterviewUpdates = () => {
 
 	useEffect(() => {
 		if (user.checkedin) {
-			console.count("FETCHING INTERVIEW AND QUEUE");
+			console.count("FETCHING INTERVIEW");
 			const interview_unsubscribe = FETCH_INTERVIEW();
-			const queue_unsubscribe = FETCH_QUEUE();
 			return () => {
 				interview_unsubscribe();
-				queue_unsubscribe();
 			};
 		} else {
 			setInterview();
-			setQueuePos();
 		}
 	}, [user]);
+
+	useEffect(() => {
+		if (interview.id) {
+			console.count("FETCHING QUEUE");
+			const queue_unsubscribe = FETCH_QUEUE();
+			return () => {
+				queue_unsubscribe();
+			};
+		} else {
+			setQueuePos();
+		}
+	}, [interview]);
 
 	useEffect(() => {
 		console.count("FETCHING STUDENT");

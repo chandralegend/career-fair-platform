@@ -44,19 +44,14 @@ const SessionCard = ({ session }) => {
 		}
 	};
 
-	const handleCheckIn = async (session, userID) => {
-		if (session != undefined && userID != undefined) {
-			const data = {
-				studentId: userID,
-				sessionId: session.id,
-				isWalkin: false,
-				companyId: company_id,
-			};
-			await createInterview(data);
-		} else {
-			//TODO: handle error
-			console.log("cannot create");
-		}
+	const handleCheckIn = (session, userID) => {
+		const data = {
+			studentId: userID,
+			sessionId: session.id,
+			isWalkin: false,
+			companyId: company_id,
+		};
+		createInterview(data);
 	};
 
 	useEffect(() => {
@@ -65,38 +60,34 @@ const SessionCard = ({ session }) => {
 	}, []);
 
 	return (
-		<Flex boxShadow="base" p={3} flexDirection="column" mt={5} width="100%" rounded="md">
-			<Skeleton isLoaded={!loading} rounded="xl" fadeDuration={3}>
-				<Flex alignItems="center">
-					<Flex width="30%">
-						<Avatar size="md" src={company_logo} mr={3} backgroundColor="white" boxShadow="lg" />
-						<Flex flexDirection="column">
-							<Text noOfLines={1} fontSize="larger">
+		<Flex boxShadow='base' p={3} flexDirection='column' mt={5} width='100%' rounded='md'>
+			<Skeleton isLoaded={!loading} rounded='xl' fadeDuration={3}>
+				<Flex alignItems='center'>
+					<Flex width='30%'>
+						<Avatar size='md' src={company_logo} mr={3} backgroundColor='white' boxShadow='lg' />
+						<Flex flexDirection='column'>
+							<Text noOfLines={1} fontSize='larger'>
 								{company_name}
 							</Text>
-							<Text fontSize="smaller">Panel {panel_no}</Text>
+							<Text fontSize='smaller'>Panel {panel_no}</Text>
 						</Flex>
 					</Flex>
-					<Flex width="55%">
-						<Text fontSize="large">
-							{assigned_students && assigned_students.length} people are assigned
-						</Text>
+					<Flex width='55%'>
+						<Text fontSize='large'>{assigned_students && assigned_students.length} people are assigned</Text>
 					</Flex>
-					<Flex width="15%">
+					<Flex width='15%'>
 						<Button
-							colorScheme="blue"
+							colorScheme='blue'
 							disabled={!isCheckinEnabled || user.checkedin}
-							rounded="full"
-							onClick={() => handleCheckIn(session, user.uuid)}
-						>
+							rounded='full'
+							onClick={() => handleCheckIn(session, user.uuid)}>
 							Check-In
 						</Button>
 					</Flex>
 				</Flex>
-				<Flex justifyContent="flex-end">
-					<Text fontSize="xs">
-						{interview_schedule &&
-							moment.unix(interview_schedule.seconds).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+				<Flex justifyContent='flex-end'>
+					<Text fontSize='xs'>
+						{interview_schedule && moment.unix(interview_schedule.seconds).format("dddd, MMMM Do YYYY, h:mm:ss a")}
 					</Text>
 				</Flex>
 			</Skeleton>

@@ -5,7 +5,6 @@ import InterviewControls from "./InterviewControls";
 
 const InterviewController = ({ session, panels }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
-
 	return (
 		<Flex flexDirection="column">
 			<Flex
@@ -17,7 +16,10 @@ const InterviewController = ({ session, panels }) => {
 				shadow="md"
 				p={3}
 			>
-				<CurrentInterview session={session} />
+				<CurrentInterview
+					session={session}
+					panel={panels && panels.filter((elemnt) => elemnt.id == session.panel_id)[0]}
+				/>
 			</Flex>
 			<Flex
 				width="100%"

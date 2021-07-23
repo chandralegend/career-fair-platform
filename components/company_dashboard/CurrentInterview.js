@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { useInterview } from "../../lib/interviews";
 import CandidateDetails from "./CandidateDetails";
 import { getStudent, createMeeting } from "../../lib/api";
+import { useAuth } from "../../lib/auth";
 
-const CurrentInterview = ({ session }) => {
+const CurrentInterview = ({ session, panel }) => {
 	const { inQueueInterviews } = useInterview();
 	const [student, setStudent] = useState();
 	const [isloading, setisloading] = useState(false);
+	const { user } = useAuth();
 	useEffect(() => {
 		if (inQueueInterviews.length) {
 			console.count("current Interview get Student");
@@ -33,16 +35,22 @@ const CurrentInterview = ({ session }) => {
 					isLoading={isloading}
 					disabled={!inQueueInterviews.length && !session}
 					onClick={async () => {
-						setisloading(true);
-						createMeeting({
-							interviewId: inQueueInterviews[0].id,
-							sessionTime: session.start_time._seconds * 1000,
-						})
-							.then((response) => {
-								setisloading(false);
-								window.open(response.data, "_blank");
+						if (session && student.name && panel.assigned_representative.email && user) {
+							setisloading(true);
+							createMeeting({
+								interviewId: inQueueInterviews[0].id,
+								coordinatorEmail: panel.assigned_representative.email,
+								studentName: student.name,
+								companyName: user.name,
 							})
-							.catch((e) => console.log(e));
+								.then((response) => {
+									setisloading(false);
+									window.open(response.data, "_blank");
+								})
+								.catch((e) => console.log(e));
+						} else {
+							console.log(No);
+						}
 					}}
 				>
 					Join Meeting

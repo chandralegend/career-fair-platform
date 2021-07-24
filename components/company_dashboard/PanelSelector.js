@@ -1,16 +1,23 @@
 import { Button, Flex, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import PanelSelectorModal from "./PanelSelectorModal";
 import { updatePanelAvailability } from "../../lib/api";
+import { useEffect } from "react";
 
 const PanelSelector = ({ selected, data, setPanel }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const LeavePanel = () => {
+	function LeavePanel() {
 		console.count("Leave Panel");
 		updatePanelAvailability(selected, { availability: true });
-		setPanel();
-	};
+		setPanel(null);
+	}
+
+	useEffect(() => {
+		return () => {
+			LeavePanel();
+		};
+	}, []);
 
 	return (
 		<Flex p={3} background={cardBackground} width='100%' shadow='md'>

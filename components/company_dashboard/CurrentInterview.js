@@ -33,7 +33,7 @@ const CurrentInterview = ({ session, panel }) => {
 					shadow='md'
 					rounded='full'
 					isLoading={isloading}
-					disabled={!inQueueInterviews.length && !session}
+					disabled={!student}
 					onClick={async () => {
 						if (session && student.name && panel.assign_representative.email && user) {
 							setisloading(true);

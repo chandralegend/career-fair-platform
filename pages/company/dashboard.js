@@ -17,7 +17,7 @@ import Footer from "../../components/Footer";
 
 const dashboard = () => {
 	const { user } = useAuth();
-	const [panel, setPanel] = useState(); // selected panel
+	const [panel, setPanel] = useState(null); // selected panel
 	const [panels, setPanels] = useState([]);
 	const [sessions, setSessions] = useState([]);
 	const [currentSession, setCurrentSession] = useState({});
@@ -39,7 +39,7 @@ const dashboard = () => {
 					setPanels(res.data);
 				})
 				.catch((error) => console.log(error));
-			if (panel) {
+			if (panel != null) {
 				console.count("Getting Sessions Called");
 				getPanelSessions(panel).then((res) => {
 					const sessions = res.data;

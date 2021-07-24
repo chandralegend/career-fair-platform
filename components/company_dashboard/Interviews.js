@@ -28,7 +28,7 @@ import { getStudent } from "../../lib/api";
 const Interviews = ({ session }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
 	const [assignedCandidates, setAssignedCandidates] = useState();
-	const { completedInterviews, walkinInterviews, inQueueInterviews, Refresh } = useInterview();
+	const { completedInterviews, walkinInterviews, inQueueInterviews } = useInterview();
 
 	const underConstructionLottie = {
 		loop: true,
@@ -163,9 +163,6 @@ const Interviews = ({ session }) => {
 						</TabPanel>
 					</TabPanels>
 				</Stack>
-				<Button rounded='full' colorScheme='pink' width='-webkit-fit-content' onClick={() => Refresh()}>
-					Refresh
-				</Button>
 			</Tabs>
 		</Flex>
 	);

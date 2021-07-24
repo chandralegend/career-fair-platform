@@ -24,7 +24,7 @@ const CompanyDetails = ({ panel_id }) => {
 				<Heading size='md' mt={3}>
 					{user.name}
 				</Heading>
-				<Text color='blackAlpha.500'>______</Text>
+				<Text>______</Text>
 			</Flex>
 
 			{representative ? <Representative data={representative} /> : null}

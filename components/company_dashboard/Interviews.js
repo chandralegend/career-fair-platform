@@ -54,20 +54,20 @@ const Interviews = ({ session }) => {
 	}, [session, completedInterviews, walkinInterviews, inQueueInterviews]);
 
 	return (
-		<Flex direction='column' bg={cardBackground} shadow='md' p={3} height='-webkit-fit-content' width='100%'>
-			<Tabs variant='solid-rounded' colorScheme='pink' align='center' m={2}>
+		<Flex direction="column" bg={cardBackground} shadow="md" p={3} height="-webkit-fit-content" width="100%">
+			<Tabs variant="solid-rounded" colorScheme="pink" align="center" m={2}>
 				<TabList>
-					<Tab fontSize='sm'>Assigned Candidates</Tab>
-					<Tab fontSize='sm'>WalkIn Candidates</Tab>
-					<Tab fontSize='sm'>In Queue</Tab>
-					<Tab fontSize='sm'>Completed</Tab>
-					<Tab fontSize='sm'>Panel History</Tab>
+					<Tab fontSize="sm">Assigned Candidates</Tab>
+					<Tab fontSize="sm">WalkIn Candidates</Tab>
+					<Tab fontSize="sm">In Queue</Tab>
+					<Tab fontSize="sm">Completed</Tab>
+					<Tab fontSize="sm">Panel History</Tab>
 				</TabList>
-				<Stack overflow='scroll' height='-webkit-fit-content' maxHeight='80vh'>
+				<Stack overflow="scroll" height="-webkit-fit-content" maxHeight="80vh" overflow="auto">
 					<TabPanels>
 						<TabPanel>
 							{assignedCandidates ? (
-								<Table variant='striped' size='sm' colorScheme='teal'>
+								<Table variant="striped" size="sm" colorScheme="teal">
 									<Thead>
 										<Tr>
 											<Th>Student Name</Th>
@@ -80,7 +80,7 @@ const Interviews = ({ session }) => {
 									<Tbody>
 										{assignedCandidates &&
 											assignedCandidates.map((student_id) => (
-												<StudentRow student_id={student_id} key={student_id} type='assigned' />
+												<StudentRow student_id={student_id} key={student_id} type="assigned" />
 											))}
 									</Tbody>
 								</Table>
@@ -90,7 +90,7 @@ const Interviews = ({ session }) => {
 						</TabPanel>
 						<TabPanel>
 							{walkinInterviews.length ? (
-								<Table variant='striped' size='sm' colorScheme='teal'>
+								<Table variant="striped" size="sm" colorScheme="teal">
 									<Thead>
 										<Tr>
 											<Th>Student Name</Th>
@@ -103,7 +103,11 @@ const Interviews = ({ session }) => {
 									<Tbody>
 										{walkinInterviews &&
 											walkinInterviews.map((interview) => (
-												<StudentRow student_id={interview.student_id} key={interview.student_id} type='walkin' />
+												<StudentRow
+													student_id={interview.student_id}
+													key={interview.student_id}
+													type="walkin"
+												/>
 											))}
 									</Tbody>
 								</Table>
@@ -113,7 +117,7 @@ const Interviews = ({ session }) => {
 						</TabPanel>
 						<TabPanel>
 							{inQueueInterviews.length ? (
-								<Table variant='striped' size='sm' width='100%' colorScheme='teal'>
+								<Table variant="striped" size="sm" width="100%" colorScheme="teal">
 									<Thead>
 										<Tr>
 											<Th>Student Name</Th>
@@ -123,10 +127,14 @@ const Interviews = ({ session }) => {
 											<Th></Th>
 										</Tr>
 									</Thead>
-									<Tbody width='100%'>
+									<Tbody width="100%">
 										{inQueueInterviews &&
 											inQueueInterviews.map((interview) => (
-												<StudentRow student_id={interview.student_id} key={interview.student_id} type='inQueue' />
+												<StudentRow
+													student_id={interview.student_id}
+													key={interview.student_id}
+													type="inQueue"
+												/>
 											))}
 									</Tbody>
 								</Table>
@@ -136,7 +144,7 @@ const Interviews = ({ session }) => {
 						</TabPanel>
 						<TabPanel>
 							{completedInterviews.length ? (
-								<Table variant='striped' size='sm' width='100%' colorScheme='teal'>
+								<Table variant="striped" size="sm" width="100%" colorScheme="teal">
 									<Thead>
 										<Tr>
 											<Th>Student Name</Th>
@@ -146,10 +154,14 @@ const Interviews = ({ session }) => {
 											<Th></Th>
 										</Tr>
 									</Thead>
-									<Tbody width='100%'>
+									<Tbody width="100%">
 										{completedInterviews &&
 											completedInterviews.map((interview) => (
-												<StudentRow student_id={interview.student_id} key={interview.student_id} type='completed' />
+												<StudentRow
+													student_id={interview.student_id}
+													key={interview.student_id}
+													type="completed"
+												/>
 											))}
 									</Tbody>
 								</Table>
@@ -179,18 +191,19 @@ const StudentRow = ({ student_id, type }) => {
 	if (type === "assigned") {
 		return (
 			<Tr>
-				<Td maxWidth='200px'>{student && student.name}</Td>
+				<Td maxWidth="200px">{student && student.name}</Td>
 				<Td>{student && student.username}</Td>
 				<Td>{student && student.department}</Td>
-				<Td maxWidth='200px'>{student && student.email}</Td>
+				<Td maxWidth="200px">{student && student.email}</Td>
 				<Td>
 					<Button
-						colorScheme='teal'
-						size='sm'
-						rounded='full'
+						colorScheme="teal"
+						size="sm"
+						rounded="full"
 						onClick={() => {
 							window.open(student.cvUrl, "_blank");
-						}}>
+						}}
+					>
 						CV
 					</Button>
 				</Td>
@@ -199,22 +212,28 @@ const StudentRow = ({ student_id, type }) => {
 	} else {
 		return (
 			<Tr>
-				<Td maxWidth='200px'>{student && student.name}</Td>
+				<Td maxWidth="200px">{student && student.name}</Td>
 				<Td>{student && student.username}</Td>
 				<Td>{student && student.department}</Td>
-				<Td maxWidth='200px'>{student && student.email}</Td>
+				<Td maxWidth="200px">{student && student.email}</Td>
 				<Td>
 					<ButtonGroup>
 						<Button
-							colorScheme='teal'
-							size='sm'
-							rounded='full'
+							colorScheme="teal"
+							size="sm"
+							rounded="full"
 							onClick={() => {
 								window.open(student.cvUrl, "_blank");
-							}}>
+							}}
+						>
 							CV
 						</Button>
-						<Button colorScheme='red' size='sm' rounded='full' hidden={type !== "walkin" || type === "completed"}>
+						<Button
+							colorScheme="red"
+							size="sm"
+							rounded="full"
+							hidden={type !== "walkin" || type === "completed"}
+						>
 							Cancel
 						</Button>
 					</ButtonGroup>

@@ -62,6 +62,7 @@ const InterviewUpdates = () => {
 				interview_unsubscribe();
 			};
 		} else {
+			console.log("Interview Resetted");
 			setInterview({});
 		}
 	}, [user]);

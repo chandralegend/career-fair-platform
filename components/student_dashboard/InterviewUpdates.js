@@ -21,6 +21,10 @@ const InterviewUpdates = () => {
 					const company_details = res.data;
 					setInterview({ id: interviewRef.id, ...interview, company_name: company_details.name });
 				});
+				if (interviewRef.empty) {
+					console.log(interviewRef.empty);
+					setInterview({});
+				}
 			});
 		return unsubscriber;
 	}
@@ -33,9 +37,9 @@ const InterviewUpdates = () => {
 			.orderBy("created_at", "desc")
 			.onSnapshot((snapshot) => {
 				console.count("UPDATING QUEUE");
-				snapshot.forEach((doc, id) => {
+				snapshot.docs.forEach((doc, idx) => {
 					if (doc.id === interview.id) {
-						setQueuePos(id);
+						setQueuePos(idx);
 					}
 				});
 			});
@@ -65,7 +69,7 @@ const InterviewUpdates = () => {
 			console.log("Interview Resetted");
 			setInterview({});
 		}
-	}, [user]);
+	}, [user.checkedin]);
 
 	useEffect(() => {
 		if (interview.id) {
@@ -99,7 +103,7 @@ const InterviewUpdates = () => {
 
 	return (
 		<Flex p={6} flexDirection='column' width='100%'>
-			{interview.id ? (
+			{user.checkedin ? (
 				<Flex>
 					<Flex flexDirection='column' width='30%'>
 						<Text>You are Currently in,</Text>
@@ -126,9 +130,9 @@ const InterviewUpdates = () => {
 						<Button
 							rounded='full'
 							colorScheme='green'
-							disabled={!interview.meeting_link}
+							disabled={!interview.meet_link}
 							onClick={() => {
-								window.open(interview.meeting_link, "_blank");
+								window.open(interview.meet_link, "_blank");
 							}}>
 							Join Meeting
 						</Button>

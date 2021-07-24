@@ -23,23 +23,23 @@ const CurrentInterview = ({ session, panel }) => {
 	}, [inQueueInterviews]);
 
 	return (
-		<Flex p={3} flexDirection="column" width="100%">
-			<Heading size="md">Current Interview</Heading>
+		<Flex p={3} flexDirection='column' width='100%'>
+			<Heading size='md'>Current Interview</Heading>
 			<CandidateDetails data={student} />
 			<ButtonGroup mt={3}>
 				<Button
 					flex={1}
-					colorScheme="green"
-					shadow="md"
-					rounded="full"
+					colorScheme='green'
+					shadow='md'
+					rounded='full'
 					isLoading={isloading}
 					disabled={!inQueueInterviews.length && !session}
 					onClick={async () => {
-						if (session && student.name && panel.assigned_representative.email && user) {
+						if (session && student.name && panel.assign_representative.email && user) {
 							setisloading(true);
 							createMeeting({
 								interviewId: inQueueInterviews[0].id,
-								coordinatorEmail: panel.assigned_representative.email,
+								coordinatorEmail: panel.assign_representative.email,
 								studentName: student.name,
 								companyName: user.name,
 							})
@@ -51,20 +51,18 @@ const CurrentInterview = ({ session, panel }) => {
 						} else {
 							console.log(No);
 						}
-					}}
-				>
+					}}>
 					Join Meeting
 				</Button>
 				<Button
 					flex={1}
-					colorScheme="orange"
-					shadow="md"
-					rounded="full"
+					colorScheme='orange'
+					shadow='md'
+					rounded='full'
 					disabled={!inQueueInterviews.length}
 					onClick={() => {
 						window.open(inQueueInterviews[0] && "https://www.google.com/forms/about/", "_blank");
-					}}
-				>
+					}}>
 					Feedback
 				</Button>
 			</ButtonGroup>

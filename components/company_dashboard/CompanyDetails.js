@@ -12,8 +12,7 @@ const CompanyDetails = ({ panel_id }) => {
 		if (panel_id) {
 			console.count("Getting Panel Data");
 			getPanel(panel_id).then((res) => {
-				console.log(res);
-				setRepresentative(res.data.assigned_representative);
+				setRepresentative(res.data.assign_representative);
 			});
 		}
 	}, [panel_id]);

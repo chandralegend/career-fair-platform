@@ -62,7 +62,7 @@ const InterviewUpdates = () => {
 				interview_unsubscribe();
 			};
 		} else {
-			setInterview();
+			setInterview({});
 		}
 	}, [user]);
 
@@ -98,7 +98,7 @@ const InterviewUpdates = () => {
 
 	return (
 		<Flex p={6} flexDirection='column' width='100%'>
-			{interview ? (
+			{interview.id ? (
 				<Flex>
 					<Flex flexDirection='column' width='30%'>
 						<Text>You are Currently in,</Text>

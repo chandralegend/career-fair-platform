@@ -2,7 +2,7 @@ import { Flex, useColorModeValue, Heading, Text, Avatar, Button } from "@chakra-
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../lib/auth";
 import { db } from "../../lib/firebase";
-import { getCompany } from "../../lib/api";
+import { getCompany, createInterview, getPanelSessions } from "../../lib/api";
 
 const WalkInInterviews = () => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
@@ -36,18 +36,19 @@ const WalkInInterviews = () => {
 	}, []);
 
 	return (
-		<Flex width='24%' justifyContent='center'>
+		<Flex width="24%" justifyContent="center">
 			<Flex
 				p={6}
-				height='-webkit-fit-content'
-				width='100%'
+				height="-webkit-fit-content"
+				width="100%"
 				background={cardBackground}
-				flexDirection='column'
-				alignItems='center'
-				shadow='md'>
-				<Heading size='md'>Walk-In Interviews</Heading>
+				flexDirection="column"
+				alignItems="center"
+				shadow="md"
+			>
+				<Heading size="md">Walk-In Interviews</Heading>
 				{interviews.length >= 1 ? (
-					<Flex flexDirection='column' width='100%'>
+					<Flex flexDirection="column" width="100%">
 						{interviews.map((interview) => {
 							return <WalkInInterviewCard data={interview} key={interview.id} />;
 						})}
@@ -66,6 +67,34 @@ const WalkInInterviewCard = ({ data }) => {
 	const [company, setCompany] = useState({});
 	const already_assigned = user.company_list.includes(data.company_id);
 
+	function getCurrentSessionID(sessions) {
+		let finalSession = undefined;
+		sessions.forEach((session) => {
+			const time_now = new Date().getTime() / 1000;
+			if (time_now >= session.start_time._seconds && time_now <= session.end_time._seconds) {
+				finalSession = session.id;
+			}
+		});
+		return finalSession;
+	}
+
+	const handleCheckIn = (userID, companId) => {
+		getPanelSessions(data.id).then((sessions) => {
+			const sessionId = getCurrentSessionID(sessions.data);
+			if (sessionId) {
+				const body = {
+					studentId: userID,
+					sessionId: sessionId,
+					isWalkin: true,
+					companyId: companId,
+				};
+				createInterview(body);
+			} else {
+				console.log("no session");
+			}
+		});
+	};
+
 	useEffect(() => {
 		console.count("FETCHING COMPANY DATA");
 		getCompany(company_id).then((company) => {
@@ -74,23 +103,29 @@ const WalkInInterviewCard = ({ data }) => {
 	}, []);
 
 	return (
-		<Flex shadow='md' rounded='md' p={3} flexDirection='column' mt={5}>
+		<Flex shadow="md" rounded="md" p={3} flexDirection="column" mt={5}>
 			<Flex mb={3}>
-				<Avatar size='md' src={company.photoUrl} mr={3} backgroundColor='white' boxShadow='lg' />
-				<Flex flexDirection='column'>
+				<Avatar size="md" src={company.photoUrl} mr={3} backgroundColor="white" boxShadow="lg" />
+				<Flex flexDirection="column">
 					<Text>{company.name}</Text>
-					<Text fontSize='small'>Panel {panel_no}</Text>
+					<Text fontSize="small">Panel {panel_no}</Text>
 				</Flex>
 			</Flex>
 			<Button
-				colorScheme='teal'
-				boxShadow='md'
-				rounded='full'
+				colorScheme="teal"
+				boxShadow="md"
+				rounded="full"
 				disabled={already_assigned || user.checkedin}
 				onClick={() => {
-					//TODO: Handle Checkin @Janith
-					console.log("Handle Ckeckin");
-				}}>
+					if (user && company_id) {
+						try {
+							handleCheckIn(user.uuid, company_id);
+						} catch (error) {
+							console.log(error);
+						}
+					}
+				}}
+			>
 				{already_assigned ? "Already Assigned" : "Check-In"}
 			</Button>
 		</Flex>

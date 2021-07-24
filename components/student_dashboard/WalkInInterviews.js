@@ -64,8 +64,7 @@ const WalkInInterviewCard = ({ data }) => {
 	const { user } = useAuth();
 	const { panel_no, company_id } = data;
 	const [company, setCompany] = useState({});
-	// const already_assigned = user.assigned_panels.include(data.id);
-	const already_assigned = false;
+	const already_assigned = user.company_list.includes(data.company_id);
 
 	useEffect(() => {
 		console.count("FETCHING COMPANY DATA");
@@ -92,7 +91,7 @@ const WalkInInterviewCard = ({ data }) => {
 					//TODO: Handle Checkin @Janith
 					console.log("Handle Ckeckin");
 				}}>
-				Check-In
+				{already_assigned ? "Already Assigned" : "Check-In"}
 			</Button>
 		</Flex>
 	);

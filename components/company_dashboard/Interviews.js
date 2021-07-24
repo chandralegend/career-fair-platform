@@ -24,6 +24,7 @@ import EmptyLottie from "../../lib/lottie_animations/empty.json";
 
 import { useInterview } from "../../lib/interviews";
 import { getStudent } from "../../lib/api";
+import { db } from "../../lib/firebase";
 
 const Interviews = ({ session }) => {
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
@@ -157,7 +158,6 @@ const Interviews = ({ session }) => {
 								<Lottie options={emptyLottie} height={300} width={300} />
 							)}
 						</TabPanel>
-						//TODO: Add a Table with all the activities
 						<TabPanel>
 							<Lottie options={underConstructionLottie} height={300} width={300} />
 						</TabPanel>
@@ -214,7 +214,15 @@ const StudentRow = ({ student_id, type }) => {
 							}}>
 							CV
 						</Button>
-						<Button colorScheme='red' size='sm' rounded='full' hidden={type !== "walkin" || type === "completed"}>
+						<Button
+							colorScheme='red'
+							size='sm'
+							rounded='full'
+							hidden={type !== "walkin" || type === "completed"}
+							onClick={() => {
+								db.collection("students").doc(student_id).update({ checkedin: "" });
+								db.collection("interviews").doc(interview.id).delete();
+							}}>
 							Cancel
 						</Button>
 					</ButtonGroup>

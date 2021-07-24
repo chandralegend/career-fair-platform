@@ -104,7 +104,7 @@ const InterviewUpdates = () => {
 	return (
 		<Flex p={6} flexDirection='column' width='100%'>
 			{user.checkedin ? (
-				<Flex>
+				<Flex alignItems='center'>
 					<Flex flexDirection='column' width='30%'>
 						<Text>You are Currently in,</Text>
 						<Heading noOfLines={2}>{interview.company_name}</Heading>

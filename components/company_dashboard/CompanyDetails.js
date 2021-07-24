@@ -21,7 +21,7 @@ const CompanyDetails = ({ panel_id }) => {
 		<Flex mt={3} alignItems='center' background={cardBackground} width='100%' p={3} shadow='md' flexDirection='column'>
 			<Flex flexDirection='column' alignItems='center'>
 				<Avatar size='xl' name={user.name} src={user.photoUrl} shadow='base' />
-				<Heading size='md' mt={3}>
+				<Heading size='md' mt={3} noOfLines={1}>
 					{user.name}
 				</Heading>
 				<Text>______</Text>
@@ -38,7 +38,9 @@ const Representative = ({ data }) => {
 			<Heading size='sm' mb={2}>
 				Representative's Details
 			</Heading>
-			<Text fontSize='sm'>{data.name}</Text>
+			<Text fontSize='sm' noOfLines={1}>
+				{data.name}
+			</Text>
 			<Text fontSize='sm'>{data.email}</Text>
 			<Text fontSize='sm'>{data.phone}</Text>
 		</Flex>

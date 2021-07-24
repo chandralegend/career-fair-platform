@@ -107,7 +107,7 @@ const InterviewUpdates = () => {
 				<Flex>
 					<Flex flexDirection='column' width='30%'>
 						<Text>You are Currently in,</Text>
-						<Heading>{interview.company_name}</Heading>
+						<Heading noOfLines={2}>{interview.company_name}</Heading>
 						<Text>Interview Queue</Text>
 					</Flex>
 					<Flex alignItems='center' justifyContent='center' width='60%'>

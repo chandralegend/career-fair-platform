@@ -64,7 +64,7 @@ const Interviews = ({ session }) => {
 					<Tab fontSize='sm'>Completed</Tab>
 					<Tab fontSize='sm'>Panel History</Tab>
 				</TabList>
-				<Stack overflow='scroll' height='-webkit-fit-content' maxHeight='80vh'>
+				<Stack overflow='scroll' height='-webkit-fit-content' maxHeight='80vh' overflow='auto'>
 					<TabPanels>
 						<TabPanel>
 							{assignedCandidates ? (

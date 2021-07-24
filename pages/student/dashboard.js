@@ -24,7 +24,7 @@ const dashboard = () => {
 						<WalkInInterviews />
 					</Flex>
 				</SlideFade>
-				<Flex position='absolute' bottom={3} right={3}>
+				<Flex position='absolute' bottom={5} right={5}>
 					<Footer />
 				</Flex>
 			</Flex>

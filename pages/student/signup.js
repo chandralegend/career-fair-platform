@@ -23,6 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 import CompanyChooser from "../../components/CompanyChooser";
 import { storage } from "../../lib/firebase";
@@ -33,6 +34,7 @@ import Footer from "../../components/Footer";
 const studentRegister = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const cardBackground = useColorModeValue("gray.100", "gray.900");
+	const history = useRouter();
 
 	const toast = useToast();
 	const { signup } = useAuth();
@@ -177,6 +179,16 @@ const studentRegister = () => {
 			backgroundSize='cover'>
 			<Flex mb={6} alignItems='center' justifyContent='space-between'>
 				<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={10} />
+				<Button
+					disabled={!uidState}
+					colorScheme='teal'
+					rounded='full'
+					hidden={!uidState}
+					onClick={() => {
+						history.push("/student/login");
+					}}>
+					Finish SignUp
+				</Button>
 				<IconButton
 					onClick={toggleColorMode}
 					backgroundColor={cardBackground}
@@ -377,13 +389,14 @@ const studentRegister = () => {
 						width='100%'
 						height='-webkit-fit-content'
 						maxHeight='80vh'
-						overflow='auto'
 						p={6}>
 						<Center mb={4}>
 							<Heading size='md'>Select Companies</Heading>
 						</Center>
 						{isSubmitForm ? (
-							<CompanyChooser userID={uidState} />
+							<Flex maxHeight='90%' overflow='auto'>
+								<CompanyChooser userID={uidState} />
+							</Flex>
 						) : (
 							<Center>
 								<Text>Submit Your Details to Select Company Priority List</Text>
@@ -391,14 +404,9 @@ const studentRegister = () => {
 						)}
 					</Flex>
 				</Flex>
-				<Flex mt={10} justifyContent='flex-end'>
-					<Button disabled={!uidState} colorScheme='teal' rounded='full' hidden={!uidState}>
-						Finish SignUp
-					</Button>
-				</Flex>
 			</SlideFade>
 
-			<Flex position='absolute' bottom={3} right={3}>
+			<Flex position='absolute' bottom={5} right={5}>
 				<Footer />
 			</Flex>
 		</Flex>

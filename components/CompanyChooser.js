@@ -112,7 +112,7 @@ const CompanyChooser = ({ userID }) => {
 			</Flex>
 
 			<Flex justifyContent='flex-end'>
-				<Button m={10} bg='teal.400' onClick={handleSubmit}>
+				<Button m={10} bg='teal.400' onClick={handleSubmit} rounded='full'>
 					Submit Priority List
 				</Button>
 			</Flex>

@@ -7,7 +7,7 @@ Career fair platform is a web application that allows companies and students to 
 Use the package manager [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/package/npm) to run yelp clone. use `npm install` instead of `yarn` if you are using node package manager (npm)
 
 ```bash
-yarn or npm install
+npm install or yarn
 ```
 
 ## Usage

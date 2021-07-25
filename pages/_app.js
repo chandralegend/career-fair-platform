@@ -3,6 +3,7 @@ import "@fontsource/montserrat";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { AuthProvider } from "../lib/auth";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 const theme = extendTheme({
 	fonts: {
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
 		<ChakraProvider theme={theme}>
 			<AuthProvider>
 				<Component {...pageProps} />
+				<MessengerCustomerChat pageId='104865428562298' appId='176380987815244' htmlRef='<REF_STRING>' />
 			</AuthProvider>
 		</ChakraProvider>
 	);

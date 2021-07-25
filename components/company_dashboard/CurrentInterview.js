@@ -61,7 +61,11 @@ const CurrentInterview = ({ session, panel }) => {
 					rounded='full'
 					disabled={!inQueueInterviews.length}
 					onClick={() => {
-						window.open(inQueueInterviews[0] && "https://www.google.com/forms/about/", "_blank");
+						window.open(
+							inQueueInterviews[0] &&
+								`https://docs.google.com/forms/d/e/1FAIpQLSd1GFYX9Aj1XdmTlRCoeQlXvdmATMdJ4-ZVFnAtP5ILXQEYCw/viewform?usp=pp_url&entry.782583356=${panel.company_id}&entry.1214069449=${panel.panel_no}&entry.1120003671=${student.username}`,
+							"_blank"
+						);
 					}}>
 					Feedback
 				</Button>

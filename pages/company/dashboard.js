@@ -13,6 +13,7 @@ import PanelSelector from "../../components/company_dashboard/PanelSelector";
 import { getAllPanels, getPanelSessions } from "../../lib/api";
 import { useAuth } from "../../lib/auth";
 import InterviewProvider from "../../lib/interviews";
+import Head from "next/head";
 import Footer from "../../components/Footer";
 
 const dashboard = () => {
@@ -60,6 +61,10 @@ const dashboard = () => {
 				padding={5}
 				backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 				backgroundSize='cover'>
+				<Head>
+					<title>Dashboard - Company</title>
+					<meta name='viewport' content='initial-scale=1.0, width=device-width' />
+				</Head>
 				<MenuBar />
 				<SlideFade in offsetY='30px'>
 					{currentSession ? (

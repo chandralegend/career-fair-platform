@@ -13,6 +13,7 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import { StudentIcon, CompanyIcon } from "../components/icons";
+import Head from "next/head";
 import Footer from "../components/Footer";
 
 const index = () => {
@@ -29,6 +30,10 @@ const index = () => {
 			backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 			backgroundSize='cover'
 			p={5}>
+			<Head>
+				<title>EESpire 2021</title>
+				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
+			</Head>
 			<Box position='absolute' right={5} top={5}>
 				<IconButton
 					backgroundColor={buttonColor}

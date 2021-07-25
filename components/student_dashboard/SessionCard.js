@@ -95,4 +95,4 @@ const SessionCard = ({ session }) => {
 	);
 };
 
-export default SessionCard;
+export default React.memo(SessionCard);

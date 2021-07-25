@@ -1,4 +1,5 @@
 import { Flex, SlideFade } from "@chakra-ui/react";
+import Head from "next/head";
 
 import MenuBar from "../../components/MenuBar";
 import PrivateRoute from "../../components/PrivateRoute";
@@ -16,6 +17,10 @@ const dashboard = () => {
 				padding={5}
 				backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 				backgroundSize='cover'>
+				<Head>
+					<title>Dashboard - Student</title>
+					<meta name='viewport' content='initial-scale=1.0, width=device-width' />
+				</Head>
 				<MenuBar />
 				<SlideFade in offsetY='30px'>
 					<Flex flexDirection='row' mt={3}>

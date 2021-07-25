@@ -24,6 +24,7 @@ import {
 import { AddIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import CompanyChooser from "../../components/CompanyChooser";
 import { storage } from "../../lib/firebase";
@@ -177,6 +178,10 @@ const studentRegister = () => {
 			height='100vh'
 			backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 			backgroundSize='cover'>
+			<Head>
+				<title>Student SignUp</title>
+				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
+			</Head>
 			<Flex mb={6} alignItems='center' justifyContent='space-between'>
 				<Image src='https://i.ibb.co/pwJvMbG/EE-spire-logo.png' height={10} />
 				<Button

@@ -34,7 +34,7 @@ const InterviewUpdates = () => {
 			.collection("interviews")
 			.where("session_id", "==", interview.session_id)
 			.where("isCompleted", "==", false)
-			.orderBy("created_at", "desc")
+			.orderBy("created_at", "asc")
 			.onSnapshot((snapshot) => {
 				console.count("UPDATING QUEUE");
 				snapshot.docs.forEach((doc, idx) => {

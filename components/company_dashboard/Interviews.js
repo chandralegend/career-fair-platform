@@ -62,7 +62,7 @@ const Interviews = ({ session }) => {
 					<Tab fontSize='sm'>WalkIn Candidates</Tab>
 					<Tab fontSize='sm'>In Queue</Tab>
 					<Tab fontSize='sm'>Completed</Tab>
-					<Tab fontSize='sm'>Panel History</Tab>
+					{/* <Tab fontSize='sm'>Panel History</Tab> */}
 				</TabList>
 				<Stack overflow='scroll' height='-webkit-fit-content' maxHeight='80vh' overflow='auto'>
 					<TabPanels>
@@ -158,9 +158,9 @@ const Interviews = ({ session }) => {
 								<Lottie options={emptyLottie} height={300} width={300} />
 							)}
 						</TabPanel>
-						<TabPanel>
+						{/* <TabPanel>
 							<Lottie options={underConstructionLottie} height={300} width={300} />
-						</TabPanel>
+						</TabPanel> */}
 					</TabPanels>
 				</Stack>
 			</Tabs>

@@ -112,9 +112,9 @@ const login = () => {
 					</Center>
 				</form>
 			</SlideFade>
-			<Flex position='absolute' bottom={5} right={5}>
+			{/* <Flex position='absolute' bottom={5} right={5}>
 				<Footer />
-			</Flex>
+			</Flex> */}
 		</Flex>
 	);
 };

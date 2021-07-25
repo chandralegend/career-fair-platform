@@ -78,10 +78,10 @@ const SessionCard = ({ session }) => {
 					<Flex width='15%'>
 						<Button
 							colorScheme='blue'
-							disabled={!isCheckinEnabled || user.checkedin}
+							disabled={!isCheckinEnabled || user.checkedin || user.completed_companies.includes(company_id)}
 							rounded='full'
 							onClick={() => handleCheckIn(session, user.uuid)}>
-							Check-In
+							{user.completed_companies.includes(company_id) ? "Completed" : "Check-In"}
 						</Button>
 					</Flex>
 				</Flex>

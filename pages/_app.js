@@ -14,12 +14,14 @@ const theme = extendTheme({
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ChakraProvider theme={theme}>
-			<AuthProvider>
-				<Component {...pageProps} />
-				<MessengerCustomerChat pageId='104865428562298' appId='176380987815244' htmlRef='<REF_STRING>' />
-			</AuthProvider>
-		</ChakraProvider>
+		<>
+			<ChakraProvider theme={theme}>
+				<AuthProvider>
+					<Component {...pageProps} />
+				</AuthProvider>
+			</ChakraProvider>
+			<MessengerCustomerChat pageId='104865428562298' appId='176380987815244' />
+		</>
 	);
 }
 

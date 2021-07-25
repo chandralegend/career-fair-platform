@@ -10,7 +10,7 @@ const CompanyDetails = ({ panel_id }) => {
 
 	useEffect(() => {
 		if (panel_id) {
-			console.count("Getting Panel Data");
+			// console.count("Getting Panel Data");
 			getPanel(panel_id).then((res) => {
 				setRepresentative(res.data.assign_representative);
 			});

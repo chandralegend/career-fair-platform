@@ -15,7 +15,7 @@ const InterviewControls = ({ session, panels }) => {
 		setWalkin(panel_id && panels.filter((panel) => panel.id === panel_id)[0].isWalkinEnabled);
 		setCheckin(session && session.isCheckinEnabled);
 		if (inQueueInterviews.length >= 2) {
-			console.count("Interview Control get Student");
+			// console.count("Interview Control get Student");
 			getStudent(inQueueInterviews[1].student_id).then((res) => {
 				setStudent(res.data);
 			});

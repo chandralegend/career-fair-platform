@@ -19,7 +19,7 @@ const PanelSelectorModal = ({ isOpen, onClose, setPanel, data }) => {
 									disabled={!panel.availability}
 									onClick={() => {
 										setPanel(panel.id);
-										console.count("Update Panel");
+										// console.count("Update Panel");
 										updatePanelAvailability(panel.id, { availability: false });
 										onClose();
 									}}>

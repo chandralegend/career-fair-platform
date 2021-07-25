@@ -33,14 +33,14 @@ const dashboard = () => {
 
 	useEffect(() => {
 		if (user) {
-			console.count("Getting Panels Called");
+			// console.count("Getting Panels Called");
 			getAllPanels(user.uuid)
 				.then((res) => {
 					setPanels(res.data);
 				})
 				.catch((error) => console.log(error));
 			if (panel != null) {
-				console.count("Getting Sessions Called");
+				// console.count("Getting Sessions Called");
 				getPanelSessions(panel).then((res) => {
 					const sessions = res.data;
 					setSessions(sessions);

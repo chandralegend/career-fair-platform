@@ -16,7 +16,7 @@ const InterviewUpdates = () => {
 			.doc(user.checkedin)
 			.onSnapshot((interviewRef) => {
 				const interview = interviewRef.data();
-				console.count("UPDATING INTERVIEW");
+				// console.count("UPDATING INTERVIEW");
 				getCompany(interview.company_id).then((res) => {
 					const company_details = res.data;
 					setInterview({ id: interviewRef.id, ...interview, company_name: company_details.name });
@@ -36,7 +36,7 @@ const InterviewUpdates = () => {
 			.where("isCompleted", "==", false)
 			.orderBy("created_at", "asc")
 			.onSnapshot((snapshot) => {
-				console.count("UPDATING QUEUE");
+				// console.count("UPDATING QUEUE");
 				snapshot.docs.forEach((doc, idx) => {
 					if (doc.id === interview.id) {
 						setQueuePos(idx);
@@ -51,7 +51,7 @@ const InterviewUpdates = () => {
 			.collection("students")
 			.doc(user.uuid)
 			.onSnapshot((studentRef) => {
-				console.count("UPDATING USER");
+				// console.count("UPDATING USER");
 				const student = studentRef.data();
 				updateUser({ checkedin: student.checkedin });
 			});
@@ -60,7 +60,7 @@ const InterviewUpdates = () => {
 
 	useEffect(() => {
 		if (user.checkedin) {
-			console.count("FETCHING INTERVIEW");
+			// console.count("FETCHING INTERVIEW");
 			const interview_unsubscribe = FETCH_INTERVIEW();
 			return () => {
 				interview_unsubscribe();
@@ -73,7 +73,7 @@ const InterviewUpdates = () => {
 
 	useEffect(() => {
 		if (interview.id) {
-			console.count("FETCHING QUEUE");
+			// console.count("FETCHING QUEUE");
 			const queue_unsubscribe = FETCH_QUEUE();
 			return () => {
 				queue_unsubscribe();
@@ -84,7 +84,7 @@ const InterviewUpdates = () => {
 	}, [interview]);
 
 	useEffect(() => {
-		console.count("FETCHING STUDENT");
+		// console.count("FETCHING STUDENT");
 		const student_unsubscribe = FETCH_STUDENT();
 		return () => {
 			student_unsubscribe();

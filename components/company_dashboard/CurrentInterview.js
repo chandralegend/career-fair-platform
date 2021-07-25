@@ -13,7 +13,7 @@ const CurrentInterview = ({ session, panel }) => {
 	const { user } = useAuth();
 	useEffect(() => {
 		if (inQueueInterviews.length) {
-			console.count("current Interview get Student");
+			// console.count("current Interview get Student");
 			getStudent(inQueueInterviews[0].student_id).then((res) => {
 				setStudent(res.data);
 			});
@@ -49,7 +49,7 @@ const CurrentInterview = ({ session, panel }) => {
 								})
 								.catch((e) => console.log(e));
 						} else {
-							console.log(No);
+							// console.log(No);
 						}
 					}}>
 					Join Meeting

@@ -104,7 +104,12 @@ const Interviews = ({ session }) => {
 									<Tbody>
 										{walkinInterviews &&
 											walkinInterviews.map((interview) => (
-												<StudentRow student_id={interview.student_id} key={interview.student_id} type='walkin' />
+												<StudentRow
+													student_id={interview.student_id}
+													interview={interview}
+													key={interview.student_id}
+													type='walkin'
+												/>
 											))}
 									</Tbody>
 								</Table>
@@ -127,7 +132,12 @@ const Interviews = ({ session }) => {
 									<Tbody width='100%'>
 										{inQueueInterviews &&
 											inQueueInterviews.map((interview) => (
-												<StudentRow student_id={interview.student_id} key={interview.student_id} type='inQueue' />
+												<StudentRow
+													student_id={interview.student_id}
+													interview={interview}
+													key={interview.student_id}
+													type='inQueue'
+												/>
 											))}
 									</Tbody>
 								</Table>
@@ -150,7 +160,12 @@ const Interviews = ({ session }) => {
 									<Tbody width='100%'>
 										{completedInterviews &&
 											completedInterviews.map((interview) => (
-												<StudentRow student_id={interview.student_id} key={interview.student_id} type='completed' />
+												<StudentRow
+													student_id={interview.student_id}
+													interview={interview}
+													key={interview.student_id}
+													type='completed'
+												/>
 											))}
 									</Tbody>
 								</Table>
@@ -168,11 +183,11 @@ const Interviews = ({ session }) => {
 	);
 };
 
-const StudentRow = ({ student_id, type }) => {
+const StudentRow = ({ student_id, interview, type }) => {
 	const [student, setStudent] = useState();
 
 	useEffect(() => {
-		console.count("Interviews Getting Student Data");
+		// console.count("Interviews Getting Student Data");
 		getStudent(student_id).then((res) => setStudent(res.data));
 	}, []);
 

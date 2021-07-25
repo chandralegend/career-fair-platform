@@ -16,7 +16,7 @@ const WalkInInterviews = () => {
 				const walkin_enabled_panels = [];
 				snapshot.forEach((doc) => {
 					//TODO: this can be optimized further by only reading updated docs.
-					console.count("FETCHING PANEL DATA");
+					// console.count("FETCHING PANEL DATA");
 					const panel_data = doc.data();
 					walkin_enabled_panels.push({
 						id: doc.id,
@@ -36,19 +36,18 @@ const WalkInInterviews = () => {
 	}, []);
 
 	return (
-		<Flex width="24%" justifyContent="center">
+		<Flex width='24%' justifyContent='center'>
 			<Flex
 				p={6}
-				height="-webkit-fit-content"
-				width="100%"
+				height='-webkit-fit-content'
+				width='100%'
 				background={cardBackground}
-				flexDirection="column"
-				alignItems="center"
-				shadow="md"
-			>
-				<Heading size="md">Walk-In Interviews</Heading>
+				flexDirection='column'
+				alignItems='center'
+				shadow='md'>
+				<Heading size='md'>Walk-In Interviews</Heading>
 				{interviews.length >= 1 ? (
-					<Flex flexDirection="column" width="100%">
+					<Flex flexDirection='column' width='100%'>
 						{interviews.map((interview) => {
 							return <WalkInInterviewCard data={interview} key={interview.id} />;
 						})}
@@ -96,25 +95,25 @@ const WalkInInterviewCard = ({ data }) => {
 	};
 
 	useEffect(() => {
-		console.count("FETCHING COMPANY DATA");
+		// console.count("FETCHING COMPANY DATA");
 		getCompany(company_id).then((company) => {
 			setCompany(company.data);
 		});
 	}, []);
 
 	return (
-		<Flex shadow="md" rounded="md" p={3} flexDirection="column" mt={5}>
+		<Flex shadow='md' rounded='md' p={3} flexDirection='column' mt={5}>
 			<Flex mb={3}>
-				<Avatar size="md" src={company.photoUrl} mr={3} backgroundColor="white" boxShadow="lg" />
-				<Flex flexDirection="column">
+				<Avatar size='md' src={company.photoUrl} mr={3} backgroundColor='white' boxShadow='lg' />
+				<Flex flexDirection='column'>
 					<Text>{company.name}</Text>
-					<Text fontSize="small">Panel {panel_no}</Text>
+					<Text fontSize='small'>Panel {panel_no}</Text>
 				</Flex>
 			</Flex>
 			<Button
-				colorScheme="teal"
-				boxShadow="md"
-				rounded="full"
+				colorScheme='teal'
+				boxShadow='md'
+				rounded='full'
 				disabled={already_assigned || user.checkedin}
 				onClick={() => {
 					if (user && company_id) {
@@ -124,8 +123,7 @@ const WalkInInterviewCard = ({ data }) => {
 							console.log(error);
 						}
 					}
-				}}
-			>
+				}}>
 				{already_assigned ? "Already Assigned" : "Check-In"}
 			</Button>
 		</Flex>

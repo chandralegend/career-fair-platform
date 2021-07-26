@@ -44,7 +44,9 @@ const WalkInInterviews = () => {
 				background={cardBackground}
 				flexDirection='column'
 				alignItems='center'
-				shadow='md'>
+				shadow='md'
+				maxHeight={600}
+				overflow='auto'>
 				<Heading size='md'>Walk-In Interviews</Heading>
 				{interviews.length >= 1 ? (
 					<Flex flexDirection='column' width='100%'>

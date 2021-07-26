@@ -120,7 +120,7 @@ const InterviewUpdates = () => {
 							rounded='full'
 							mb={2}
 							colorScheme='red'
-							disabled={!queuePos}
+							disabled={!user.checkedin}
 							onClick={() => {
 								db.collection("interviews").doc(user.checkedin).delete();
 								db.collection("students").doc(user.uuid).update({ checkedin: "" });

@@ -81,7 +81,7 @@ const SessionCard = ({ session }) => {
 							disabled={!isCheckinEnabled || user.checkedin || user.completed_companies.includes(company_id)}
 							rounded='full'
 							onClick={() => handleCheckIn(session, user.uuid)}>
-							{user.completed_companies.includes(company_id) ? "Completed" : "Check-In"}
+							{user.completed_companies && user.completed_companies.includes(company_id) ? "Completed" : "Check-In"}
 						</Button>
 					</Flex>
 				</Flex>

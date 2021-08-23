@@ -1,4 +1,4 @@
-import { Flex, SlideFade } from "@chakra-ui/react";
+import { Center, Flex, SlideFade } from "@chakra-ui/react";
 import Head from "next/head";
 
 import MenuBar from "../../components/MenuBar";
@@ -15,20 +15,25 @@ const dashboard = () => {
 				height='100vh'
 				flexDirection='column'
 				padding={5}
-				backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
+				backgroundColor='teal'
+				// backgroundImage='https://www.pexels.com/photo/746386/download/?search_query=&tracking_id=ei3wwg0t4lc'
 				backgroundSize='cover'>
 				<Head>
 					<title>Dashboard - Student</title>
 					<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 				</Head>
-				<MenuBar />
-				<SlideFade in offsetY='30px'>
-					<Flex flexDirection='row' mt={3}>
-						<UserDetails />
-						<Interviews />
-						<WalkInInterviews />
+				<Center>
+					<Flex flexDirection='column' width='1300px' minWidth='1300px'>
+						<MenuBar />
+						<SlideFade in offsetY='30px'>
+							<Flex flexDirection='row' mt={3}>
+								<UserDetails />
+								<Interviews />
+								<WalkInInterviews />
+							</Flex>
+						</SlideFade>
 					</Flex>
-				</SlideFade>
+				</Center>
 				{/* <Flex position='absolute' bottom={5} right={5}>
 					<Footer />
 				</Flex> */}

@@ -18,7 +18,7 @@ const AssignedSessions = () => {
 	}, []);
 
 	return (
-		<Flex flexDirection='column' width='100%' p={2} overflow='scroll' maxHeight={350}>
+		<Flex flexDirection='column' width='100%' p={2} overflow='auto' maxHeight={350}>
 			<Heading size='sm'>Your Assigned Interviews</Heading>
 			{!loading ? (
 				sessions.map((session) => {

@@ -60,7 +60,7 @@ const SessionCard = ({ session }) => {
 	}, []);
 
 	return (
-		<Flex boxShadow='base' p={3} flexDirection='column' mt={5} width='100%' rounded='md'>
+		<Flex boxShadow='base' p={3} flexDirection='column' mt={5} width='100%'>
 			<Skeleton isLoaded={!loading} rounded='xl' fadeDuration={3}>
 				<Flex alignItems='center'>
 					<Flex width='30%'>
@@ -78,6 +78,7 @@ const SessionCard = ({ session }) => {
 					<Flex width='15%'>
 						<Button
 							colorScheme='blue'
+							variant={user.completed_companies && user.completed_companies.includes(company_id) ? "outline" : "solid"}
 							disabled={
 								!isCheckinEnabled ||
 								user.checkedin ||
@@ -85,7 +86,7 @@ const SessionCard = ({ session }) => {
 							}
 							rounded='full'
 							onClick={() => handleCheckIn(session, user.uuid)}>
-							{user.completed_companies && user.completed_companies.includes(company_id) ? "Completed" : "Check-In"}
+							{user.completed_companies && user.completed_companies.includes(company_id) ? "Complete" : "Check-In"}
 						</Button>
 					</Flex>
 				</Flex>
